@@ -1,0 +1,83 @@
+import React, { Component } from 'react';
+
+import { Link } from 'react-router';
+import Home from './Home';
+
+import logo from './images/TeamCaptainLogo_30h.png';
+
+var config = {
+  apiKey: "AIzaSyA9Bp3nt7764_Rco-fHAwRsld6DyWhS1B4",
+  authDomain: "teamcaptain-b3334.firebaseapp.com",
+  databaseURL: "https://teamcaptain-b3334.firebaseio.com",
+  storageBucket: "teamcaptain-b3334.appspot.com",
+  messagingSenderId: "602452524568"
+};
+
+import Rebase  from 're-base';
+var base = Rebase.createClass(config);
+  
+class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      workouts: {}
+    }
+  }
+
+  //------------------------------------------------------------------------------------------
+    componentDidMount() {
+
+      this.bindref = base.bindToState('workouts', {
+          context : this,
+          state: 'workouts'
+      });
+    }
+
+    componentWillUnmount() {
+      base.removeBinding(this.bindref);
+    }
+
+  render() {
+    var workouts = Object.keys(this.state.workouts);
+    if(workouts === null)
+      workouts = [];
+
+    const childrenWithProps = React.Children.map(this.props.children,
+     (child) => React.cloneElement(child, {
+       workouts: this.state.workouts
+     })
+    );
+
+    return (       
+
+        <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+          <header className="mdl-layout__header mdl-layout__header--seamed blackheader">
+          
+            <div className="mdl-layout__header-row">
+              <span className="mdl-layout-title">
+                <Link className="mdl-navigation__link" to="/"><img src={logo}  alt="Team Captain"/> TEAM CAPTAIN</Link>
+              </span>
+
+              <div className="mdl-layout-spacer"></div>
+
+              <nav className="mdl-navigation">
+                <Link className="mdl-navigation__link" to="/workouts">Workouts</Link>
+                <Link className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" to="/create">
+                  Create a Workout
+                </Link>
+              </nav>
+            </div>
+
+          </header>
+
+          <main className="mdl-layout__content app mdl-color--grey-100 ">
+                  { childrenWithProps || <Home /> }
+          </main>
+        </div>
+      
+    );
+  }
+}
+
+export default App;

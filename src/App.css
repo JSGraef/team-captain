@@ -1,0 +1,315 @@
+@media print {
+  body {
+    -webkit-print-color-adjust: exact !important;
+  }
+
+  .mdl-color--grey-100 {
+    background-color: transparent !important;
+  }
+
+  header {
+    display: none;
+  }
+
+  .divider {
+    page-break-before: always;
+    break-before: always;
+    page-break-inside: avoid;
+  }
+
+  .leftnumberborder {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .set .mdl-grid {
+    padding: 0 !important;
+    margin:0 !important;
+  }
+
+  .topbar {
+    background-color: #111 !important;
+    height: 3px !important;
+  }
+
+}
+
+/* Non-print */
+
+.app {
+  height: 100%;
+}
+
+.mdl-layout-title {
+    font-family: 'Oswald';
+    font-style: italic;
+    text-transform: uppercase;
+  }
+
+  h4 {
+    font-family: 'Oswald', 'Roboto', sans-serif;
+    text-transform: uppercase;
+  }
+
+  .set .mdl-grid {
+    padding: 0;
+  }
+
+  .topbar {
+    background-color: #111 !important;
+    height: 12px;
+  }
+
+  .mdl-grid {
+    max-width: 1280px;
+  }
+
+  .divider {
+    background-color:#444 !important; 
+    height: 3px;
+  }
+
+  .workout-title {
+    font-family: 'Oswald', sans-serif;
+    line-height: 1em;
+    font-size: 2.5em;
+    font-style: italic;
+    font-weight: bold;
+    margin: 0;
+    vertical-align: center;
+  }
+
+  .workout-type {
+    font-family: 'Oswald', 'Roboto', sans-serif;
+    line-height: 1.2em;
+    font-size: 1.2em;
+    text-align: left;
+    margin: 5px;
+  }
+
+  .workout-notes {
+    font-size: 1em;
+    line-height: 1.5em;
+    font-family: 'Oswald', 'Roboto', sans-serif;
+    vertical-align: middle;
+  }
+
+  .gutter {
+    color: #fff;
+    background-color: #111;
+    padding: 16px;
+    font-size: 1em;
+    font-family: 'Oswald', 'Roboto', sans-serif;
+    font-weight: normal;
+  }
+
+  .rightborder {
+    border-right: 5px solid #222;
+    padding-right: 10px;
+  }
+
+  .leftborder {
+    border-left: 3px solid #222;
+  }
+
+  .leftnumberborder {
+    border-left: 5px solid #222;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .number {
+    font-size: 1.2rem;
+  }
+
+  .numbertext {
+    font-size: 2em;
+    line-height: 1em;
+    text-align: right;
+    vertical-align: middle;
+    font-weight: 600;
+    padding-right: 10px;
+  }
+
+.numbertext-phone {
+    font-size: 2em;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+  }
+
+  .rest {
+    font-size: 1.6em;
+    line-height: 1em;
+    font-style: italic;
+  }
+
+  .settitle {
+    font-size: 1.3em;
+    line-height: 1.1em;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+  }
+
+  .setdesc {
+    font-size: 1em;
+    line-height: 1em;
+    padding: 0;
+    margin: 0;
+  }
+
+  .border {
+    border: 1px solid red;
+  }
+
+.mdl-card {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.mdl-card > * {
+  height: auto;
+}
+.mdl-card .mdl-card__supporting-text {
+  margin: 40px;
+  flex-grow: 1;
+  padding: 0;
+  color: inherit;
+  width: calc(100% - 80px);
+}
+.mdl-card__supporting-text h4 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.mdl-card__actions {
+  margin: 0;
+  padding: 4px 40px;
+  color: inherit;
+}
+.mdl-card__actions a {
+  color: #00BCD4;
+  margin: 0;
+}
+.mdl-card__actions a:hover,
+.mdl-card__actions a:active {
+  color: inherit;
+  background-color: transparent;
+}
+.mdl-card__supporting-text + .mdl-card__actions {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.create-set {
+  margin-bottom: 15px !important;
+  margin: 0 auto 15px auto;
+}
+
+.create-set .mdl-card__title {
+  background-color: #444;
+  color: #fff;
+}
+
+.create-swim .mdl-cell {
+  margin-left: 15px !important;
+}
+
+.create-set .mdl-card__actions {
+  padding-left: 15px;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.blackheader {
+  background-color: #252525;
+}
+
+.delete {
+  color: #fff;
+}
+
+.home {
+  background-image: url('./images/swimmer_bg.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 100%;
+}
+
+.hero {
+  margin-top: 25%;
+}
+
+.herotext {
+  color: #fff;
+  font-family: 'Oswald', 'Roboto', sans-serif;
+  text-align: center;
+  font-size: 3em;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+
+.herotext-supporting {
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+
+.fab-print {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 200;
+  overflow: visible;
+
+}
+
+.wo-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.3em;
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.wo-distance {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: right;
+}
+
+.wo-coach {
+  font-size: 0.8em;
+  color: #555;
+  font-style: italic;
+  margin-top: -3px;
+}
+
+.wo-notes {
+  padding-bottom: 10px;
+}
+
+.wo-tags {
+  background-color: #dcdcdc;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin-right: 5px;
+  font-size: 0.7em; 
+  padding: 5px;
+  color: #555;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.wo-tile {
+  margin: 15px 0 10px 0;
+  border-top: 1px solid #ddd;
+  padding: 15px 0 5px 0;
+}
+
