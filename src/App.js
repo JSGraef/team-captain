@@ -2,16 +2,11 @@ import React, { Component } from 'react';
 
 import { Link } from 'react-router';
 import Home from './Home';
+import c from './config/config';
 
 import logo from './images/TeamCaptainLogo_30h.png';
 
-var config = {
-  apiKey: "AIzaSyA9Bp3nt7764_Rco-fHAwRsld6DyWhS1B4",
-  authDomain: "teamcaptain-b3334.firebaseapp.com",
-  databaseURL: "https://teamcaptain-b3334.firebaseio.com",
-  storageBucket: "teamcaptain-b3334.appspot.com",
-  messagingSenderId: "602452524568"
-};
+var config = c;
 
 import Rebase  from 're-base';
 var base = Rebase.createClass(config);
