@@ -6,11 +6,11 @@ import Home from './Home';
 import logo from './images/TeamCaptainLogo_30h.png';
 
 var config = {
-  apiKey: "AIzaSyA9Bp3nt7764_Rco-fHAwRsld6DyWhS1B4",
-  authDomain: "teamcaptain-b3334.firebaseapp.com",
-  databaseURL: "https://teamcaptain-b3334.firebaseio.com",
-  storageBucket: "teamcaptain-b3334.appspot.com",
-  messagingSenderId: "602452524568"
+  apiKey: "xxxx",
+  authDomain: "xxxx",
+  databaseURL: "xxxx",
+  storageBucket: "xxxx",
+  messagingSenderId: "xxxx"
 };
 
 import Rebase  from 're-base';
