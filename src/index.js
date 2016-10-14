@@ -10,27 +10,20 @@ import Workout from './Workout';
 import Create from './Create';
 import Edit from './Edit';
 import Print from './Print';
-
-const NoMatch = React.createClass({
-  render() {
-    return <p>Not found</p>;
-  }
-});
+import PageNotFound from './PageNotFound';
 
 ReactDOM.render((
   <Router history={browserHistory} onUpdate={() => window.scrollTo(0, 0)} >
     
+    <Route path="print/:workoutid" component={Print}/>
     <Route path="/" component={App} >
       <Route path="workouts" component={ListWorkouts}/>
       <Route path="create" component={Create}/>
       <Route path="edit/:workoutId" component={Edit}/>
       <Route path="workouts/:workoutid" component={Workout}/>
+      <Route path="*" component={PageNotFound}/>      
     </Route>
-
-    <Route path="print/:workoutid" component={Print}/>
-    
-    <Route path="*" component={NoMatch}/>
-    
+  
   </Router>
   ),
   document.getElementById('root')
