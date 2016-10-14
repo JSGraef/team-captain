@@ -22,7 +22,6 @@ class App extends Component {
 
   //------------------------------------------------------------------------------------------
     componentDidMount() {
-
       this.bindref = base.bindToState('workouts', {
           context : this,
           state: 'workouts'
