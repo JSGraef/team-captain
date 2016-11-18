@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import { Link } from 'react-router';
-import Home from './Home';
 import c from './config/config';
 
 import logo from './images/TeamCaptainLogo_30h.png';
@@ -56,6 +55,7 @@ class App extends Component {
               <div className="mdl-layout-spacer"></div>
 
               <nav className="mdl-navigation">
+                <Link className="mdl-navigation__link" to="/pacecalculator">Pace Calculator</Link>
                 <Link className="mdl-navigation__link" to="/workouts">Workouts</Link>
                 <Link className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" to="/create">
                   Create a Workout
@@ -66,7 +66,7 @@ class App extends Component {
           </header>
 
           <main className="mdl-layout__content app mdl-color--grey-100 ">
-                  { childrenWithProps || <Home /> }
+                  { childrenWithProps }
           </main>
         </div>
       

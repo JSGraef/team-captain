@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
 // Firebase
+import c from './config/config';
 import Rebase  from 're-base';
-var base = Rebase.createClass('https://teamcaptain-b3334.firebaseio.com/');
+var base = Rebase.createClass(c);
 
 import { Link } from 'react-router';
 
@@ -17,10 +18,10 @@ class Workout extends Component {
         super(props);
 
         var emptyWorkout = {
-                    setorder: [],
-                    sets: {},
-                    info: {}
-                }    
+            setorder: [],
+            sets: {},
+            info: {}
+        }    
         
         this.state = (props.workout === undefined) ? 
             {workout: emptyWorkout} : 
@@ -41,7 +42,8 @@ class Workout extends Component {
         if(this.state.workout.setorder.length === 0)
             return <p>Not Found</p>
 
-        var printpath = '/print/' + this.props.routeParams.workoutid;
+        var wid = this.props.routeParams ? this.props.routeParams.workoutid : 0; // for testing purposes. There must be a better way.
+        var printpath = '/print/' + wid;
         return (
             <div>
                 <Link to={printpath} target="_blank" className="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-cell--hide-phone fab-print">

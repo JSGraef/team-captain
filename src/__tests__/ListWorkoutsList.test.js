@@ -12,7 +12,7 @@ describe('<ListWorkoutsList />', () => {
   it('renders all workouts', () => {
     const wrapper = shallow(<ListWorkoutsList workouts={workouts} />);
     const length = Object.keys(workouts).length;
-    expect(wrapper.find('.mdl-list__item').length).toBe(length);
+    expect(wrapper.find('.wo-tile').length).toBe(length);
   });
 
   it('renders title of all workouts', () => {
@@ -31,7 +31,7 @@ describe('<ListWorkoutsList />', () => {
   it('renders notes about workout', () => {
     const wrapper = shallow(<ListWorkoutsList workouts={workouts} />);
     const length = Object.keys(workouts).length;
-    expect(wrapper.find('.mdl-list__item-text-body').length).toBe(length);
+    expect(wrapper.find('.wo-notes').length).toBe(length);
   });
 
 

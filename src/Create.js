@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
 // Firebase
+import c from './config/config';
 import Rebase  from 're-base';
-var base = Rebase.createClass('https://teamcaptain-b3334.firebaseio.com/');
+var base = Rebase.createClass(c);
 
 import CreateWorkout from './CreateWorkout';
 import { Notification } from 'react-notification';
