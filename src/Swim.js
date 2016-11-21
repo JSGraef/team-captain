@@ -12,9 +12,14 @@ const Swim = (props) => {
             <p className="numbertext-phone">{props.swim.distance}</p>
         </div>
 
-        <div className="mdl-cell mdl-cell--5-col mdl-cell--4-col-tablet mdl-cell--order-3-phone">
+        <div className="mdl-cell mdl-cell--5-col mdl-cell--4-col-tablet mdl-cell--hide-phone">
             <p className="settitle">{props.swim.title}</p>
             <p className="setdesc">{props.swim.desc}</p>
+        </div>
+
+        <div className="mdl-cell--4-col-phone mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-cell--order-3-phone">
+            <p className="settitle settitle-phone">{props.swim.title}</p>
+            <p className="setdesc setdesc-phone">{props.swim.desc}</p>
         </div>
 
         <div className="mdl-cell mdl-cell--2-col mdl-cell--order-2-phone rest">

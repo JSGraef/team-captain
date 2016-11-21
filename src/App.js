@@ -44,7 +44,7 @@ class App extends Component {
 
     return (       
 
-        <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <div className="mdl-layout mdl-js-layout">
           <header className="mdl-layout__header mdl-layout__header--seamed blackheader">
           
             <div className="mdl-layout__header-row">
@@ -60,10 +60,22 @@ class App extends Component {
                 <Link className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" to="/create">
                   Create a Workout
                 </Link>
-              </nav>
+              </nav>     
+              
             </div>
 
           </header>
+
+          <div className="mdl-layout__drawer">
+            <span className="mdl-layout-title">Team Captain</span>
+            <nav className="mdl-navigation">
+              <Link className="mdl-navigation__link" to="/pacecalculator">Pace Calculator</Link>
+              <Link className="mdl-navigation__link" to="/workouts">Workouts</Link>
+              <Link className="mdl-navigation__link" to="/create">
+                Create a Workout
+              </Link>
+            </nav>
+          </div>
 
           <main className="mdl-layout__content app mdl-color--grey-100 ">
                   { childrenWithProps }

@@ -146,7 +146,7 @@
 
   .settitle {
     font-size: 1.3em;
-    line-height: 1.1em;
+    line-height: 1em;
     font-weight: bold;
     padding: 0;
     margin: 0;
@@ -157,6 +157,15 @@
     line-height: 1em;
     padding: 0;
     margin: 0;
+  }
+
+  .settitle-phone {
+    margin-left: 8px;
+  }
+
+  .setdesc-phone {
+    margin-left: 8px;
+    padding-bottom: 24px;
   }
 
   .border {
@@ -268,8 +277,10 @@
 
 }
 
+/* Workout List */
+
 .wo-title {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 1.3em;
   margin: 0;
   padding: 0;
@@ -311,5 +322,9 @@
   margin: 15px 0 10px 0;
   border-top: 1px solid #ddd;
   padding: 15px 0 5px 0;
+}
+
+.mdl-layout__drawer-button {
+  color: white;
 }
 
