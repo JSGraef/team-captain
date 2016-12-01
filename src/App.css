@@ -87,6 +87,14 @@
     margin: 5px;
   }
 
+  .workout-web {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1em;
+    font-size: 0.85em;
+    text-align: left;
+    margin: 5px;
+  }
+
   .workout-notes {
     font-size: 1em;
     line-height: 1.5em;
