@@ -13,6 +13,7 @@ import Print from './Print';
 import PageNotFound from './PageNotFound';
 import Home from './Home';
 import PaceCalculator from './PaceCalculator';
+import Dashboard from './Dashboard';
 
 ReactDOM.render((
   <Router history={browserHistory} onUpdate={() => window.scrollTo(0, 0)} >
@@ -21,6 +22,7 @@ ReactDOM.render((
     <Route path="/" component={App} >
       <IndexRoute component={Home} />
       <Route path="workouts" component={ListWorkouts}/>
+      <Route path="dashboard" component={Dashboard}/>
       <Route path="create" component={Create}/>
       <Route path="edit/:workoutId" component={Edit}/>
       <Route path="workouts/:workoutid" component={Workout}/>

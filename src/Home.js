@@ -17,6 +17,9 @@ const Home = () => {
                     SEE WORKOUTS
                 </Link>
             </div>
+            <div className="mdl-cell mdl-cell--12-col mdl-typography--text-center">
+                <div id="firebaseui-auth"></div>
+            </div>
         </div>
     </div>
   )
