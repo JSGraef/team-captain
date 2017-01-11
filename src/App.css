@@ -32,6 +32,10 @@
     height: 3px !important;
   }
 
+  .workout-type {
+    font-size: 0.8em;
+  }
+
 }
 
 /* Non-print */
@@ -81,7 +85,7 @@
 
   .workout-type {
     font-family: 'Oswald', 'Roboto', sans-serif;
-    line-height: 1.2em;
+    line-height: 1em;
     font-size: 1.2em;
     text-align: left;
     margin: 5px;

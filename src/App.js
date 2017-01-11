@@ -78,6 +78,7 @@ class App extends Component {
 
               <nav className="mdl-navigation">
                 <Link className="mdl-navigation__link" to="/pacecalculator">Pace Calculator</Link>
+                <Link className="mdl-navigation__link" to="/meetreader">Meet Reader</Link>
                 <Link className="mdl-navigation__link" to="/workouts">Workouts</Link>
                 <Link className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" to="/create">
                   Create a Workout
@@ -93,6 +94,7 @@ class App extends Component {
             <nav className="mdl-navigation">
               <Link className="mdl-navigation__link" to="/dashboard">Dashboard</Link>
               <Link className="mdl-navigation__link" to="/pacecalculator">Pace Calculator</Link>
+              <Link className="mdl-navigation__link" to="/meetreader">Meet Reader</Link>
               <Link className="mdl-navigation__link" to="/workouts">Workouts</Link>
               <Link className="mdl-navigation__link" to="/create">
                 Create a Workout
@@ -121,6 +123,7 @@ class App extends Component {
 
               <nav className="mdl-navigation">
                 <Link className="mdl-navigation__link" to="/pacecalculator">Pace Calculator</Link>
+                <Link className="mdl-navigation__link" to="/meetreader">Meet Reader</Link>
                 <Link className="mdl-navigation__link" to="/workouts">Workouts</Link>
               </nav>     
               
@@ -132,6 +135,7 @@ class App extends Component {
             <span className="mdl-layout-title">Team Captain</span>
             <nav className="mdl-navigation">
               <Link className="mdl-navigation__link" to="/pacecalculator">Pace Calculator</Link>
+              <Link className="mdl-navigation__link" to="/meetreader">Meet Reader</Link>
               <Link className="mdl-navigation__link" to="/workouts">Workouts</Link>
             </nav>
           </div>

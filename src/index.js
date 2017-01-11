@@ -13,6 +13,7 @@ import Print from './Print';
 import PageNotFound from './PageNotFound';
 import Home from './Home';
 import PaceCalculator from './PaceCalculator';
+import MeetReader from './MeetReader/MeetReader';
 import Dashboard from './Dashboard';
 
 ReactDOM.render((
@@ -27,6 +28,7 @@ ReactDOM.render((
       <Route path="edit/:workoutId" component={Edit}/>
       <Route path="workouts/:workoutid" component={Workout}/>
       <Route path="pacecalculator" component={PaceCalculator} />
+      <Route path="meetreader" component={MeetReader} />
       <Route path="*" component={PageNotFound}/>      
     </Route>
   
