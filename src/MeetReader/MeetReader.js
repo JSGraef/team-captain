@@ -170,11 +170,27 @@ class MeetReader extends Component {
 
   render() {
 
-      const childrenWithProps = React.Children.map(this.props.children,
-        (child) => React.cloneElement(child, {
-          workouts: this.state.workouts
-        })
-      );
+    //   const childrenWithProps = React.Children.map(this.props.children,
+    //     (child) => React.cloneElement(child, {
+    //       workouts: this.state.workouts
+    //     })
+    //   );
+
+    if(this.state.lines.length === 0) {
+        return (
+          <div className="mdl-grid">
+            <div className="mdl-cell mdl-cell--12-col">
+                <form onSubmit={this.onFormSubmit}>
+                    <input type="file" ref="file" name="file" id="file"/>
+                    <button type="submit">Submit</button>
+                </form>
+                <hr/>
+                <h5>Import any .sd3 or .cl2 meet file to see a list of swimmers and their times, splits, improvements, and points scored.</h5>
+                <h6>None of this information is saved.</h6>
+            </div>
+          </div>
+        );
+    }
     
     return (
         <div className="mdl-grid">
