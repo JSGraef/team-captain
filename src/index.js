@@ -14,6 +14,9 @@ import PageNotFound from './PageNotFound';
 import Home from './Home';
 import PaceCalculator from './PaceCalculator';
 import MeetReader from './MeetReader/MeetReader';
+import MREvents from './MeetReader/MREvents';
+import MRTeam from './MeetReader/MRTeam';
+import MRSwimmer from './MeetReader/MRSwimmer';
 import Dashboard from './Dashboard';
 
 ReactDOM.render((
@@ -28,7 +31,12 @@ ReactDOM.render((
       <Route path="edit/:workoutId" component={Edit}/>
       <Route path="workouts/:workoutid" component={Workout}/>
       <Route path="pacecalculator" component={PaceCalculator} />
-      <Route path="meetreader" component={MeetReader} />
+      <Route path="meetreader" component={MeetReader}>
+        <Route path="events" component={MREvents} />
+        <Route path="team/:teamid" component={MRTeam} />
+        <Route path="swimmer/:swimmerid" component={MRSwimmer} />
+      </Route>
+      
       <Route path="*" component={PageNotFound}/>      
     </Route>
   

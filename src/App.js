@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import logo from './images/TeamCaptainLogo_30h.png';
 
-import firebase from 'firebase';
-import firebaseui from 'firebaseui';
+//import firebase from 'firebase';
+//import firebaseui from 'firebaseui';
 
 import {config} from './config/config';
 import Rebase  from 're-base';
 var base = Rebase.createClass(config);
 
 //let fbapp = firebase.initializeApp(config);
-let authUi = new firebaseui.auth.AuthUI(firebase.auth());
+//let authUi = new firebaseui.auth.AuthUI(firebase.auth());
   
 class App extends Component {
 
@@ -29,25 +29,25 @@ class App extends Component {
           state: 'workouts'
       });
 
-      var uiConfig = {
-        'callbacks': {
-          'signInSuccess': (user) => {
-            console.log('user: ');
-            this.setState({authed: true});
-          }
-        },
-        signInFlow: 'popup',
-        'signInOptions': [
-          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-          firebase.auth.EmailAuthProvider.PROVIDER_ID
-        ]
-      };
-      authUi.start('#firebaseui-auth', uiConfig);
-    }
+    //   var uiConfig = {
+    //     'callbacks': {
+    //       'signInSuccess': (user) => {
+    //         //console.log('user: ');
+    //         this.setState({authed: true});
+    //       }
+    //     },
+    //     signInFlow: 'popup',
+    //     'signInOptions': [
+    //       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    //       firebase.auth.EmailAuthProvider.PROVIDER_ID
+    //     ]
+    //   };
+    //   authUi.start('#firebaseui-auth', uiConfig);
+     }
 
     componentWillUnmount() {
       base.removeBinding(this.bindref);
-      authUi.reset();
+      //authUi.reset();
     }
 
     render() {
@@ -58,10 +58,12 @@ class App extends Component {
         })
       );
       
-      console.log('authed: ', this.state.authed);
-      return this.state.authed ? 
-        this.renderSignedIn(childrenWithProps) :
-        this.renderNotSignedIn(childrenWithProps);
+      //console.log('authed: ', this.state.authed);
+      // return this.state.authed ? 
+      //   this.renderSignedIn(childrenWithProps) :
+      //   this.renderNotSignedIn(childrenWithProps);
+
+      return this.renderNotSignedIn(childrenWithProps);
   }
 
   renderSignedIn(childrenWithProps) {
@@ -125,6 +127,9 @@ class App extends Component {
                 <Link className="mdl-navigation__link" to="/pacecalculator">Pace Calculator</Link>
                 <Link className="mdl-navigation__link" to="/meetreader">Meet Reader</Link>
                 <Link className="mdl-navigation__link" to="/workouts">Workouts</Link>
+                <Link className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" to="/create">
+                  Create a Workout
+                </Link>
               </nav>     
               
             </div>
@@ -137,6 +142,9 @@ class App extends Component {
               <Link className="mdl-navigation__link" to="/pacecalculator">Pace Calculator</Link>
               <Link className="mdl-navigation__link" to="/meetreader">Meet Reader</Link>
               <Link className="mdl-navigation__link" to="/workouts">Workouts</Link>
+              <Link className="mdl-navigation__link" to="/create">
+                Create a Workout
+              </Link>
             </nav>
           </div>
 
