@@ -170,11 +170,11 @@ class MeetReader extends Component {
 
   render() {
 
-    //   const childrenWithProps = React.Children.map(this.props.children,
-    //     (child) => React.cloneElement(child, {
-    //       workouts: this.state.workouts
-    //     })
-    //   );
+      const childrenWithProps = React.Children.map(this.props.children,
+        (child) => React.cloneElement(child, {
+          teams: this.state.teams
+        })
+      );
 
     if(this.state.lines.length === 0) {
         return (
@@ -201,7 +201,7 @@ class MeetReader extends Component {
               </form>
               <hr/>
           </div>
-          <div className="mdl-cell mdl-cell--2-col">
+          <div className="mdl-cell mdl-cell--1-col">
             <div className="sidenav">
               <h6>TEAMS</h6>
               { this.state.teams.map(team => 
@@ -210,11 +210,8 @@ class MeetReader extends Component {
               <hr />
             </div>
           </div>
-          <div className="mdl-cell mdl-cell--10-col">
-            <h1>{this.state.meetInfo.meetName}</h1>
-              { this.state.teams.map(team => 
-                {return <Team key={team.teamCode} team={team} />}
-              )}
+          <div className="mdl-cell mdl-cell--11-col">
+              { childrenWithProps }
           </div>
         </div>
     );
