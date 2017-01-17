@@ -1,13 +1,14 @@
 import React from 'react';
 import Swim from './Swim';
 import U from './utils';
+import {Link} from 'react-router';
 
 const Swimmer = (props) => {
     const swim = props.swimmer.swims[0];
     return (
         <div className="mdl-cell mdl-cell--12-col swimmer">
             <div className="swimmer-header">
-                <h4>{swim.swimmerName}</h4>
+                <h4><Link to={`/meetreader/swimmer/${props.swimmer.ussNum}`}>{swim.swimmerName}</Link></h4>
                 <h6>{`Age ${swim.swimmerAge}`}</h6>
             </div>
             

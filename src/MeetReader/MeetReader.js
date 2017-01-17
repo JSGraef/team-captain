@@ -4,6 +4,7 @@ import './MeetReader.css';
 import Team from './Team';
 import TeamList from './TeamList';
 import U from './utils';
+import {Link} from 'react-router';
 
 class MeetReader extends Component {
   constructor() {
@@ -208,6 +209,7 @@ class MeetReader extends Component {
                   {return <TeamList key={team.teamCode} team={team} />}
               )}
               <hr />
+              <Link to="/meetreader/events">Events</Link>
             </div>
           </div>
           <div className="mdl-cell mdl-cell--11-col">
