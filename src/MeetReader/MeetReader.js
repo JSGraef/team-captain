@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import './MeetReader.css';
-import Team from './Team';
 import TeamList from './TeamList';
 import U from './utils';
 import {Link} from 'react-router';
@@ -17,6 +16,9 @@ class MeetReader extends Component {
       teams: []
     }
 
+    this.events = new Set();
+    this.eventsList = [];
+
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.readFile = this.readFile.bind(this);
     this.parseFileContents = this.parseFileContents.bind(this);
@@ -31,6 +33,8 @@ class MeetReader extends Component {
       meetInfo: {},
       teams: []
     });
+
+    this.events.clear();
   }
 
   onFormSubmit(e) {
@@ -95,10 +99,12 @@ class MeetReader extends Component {
             let teams = this.state.teams;
             let swimmers = teams[teams.length -1].swimmers;
 
+            // If we don't have a record for that swimmer yet, add one with an empty swims set
             if(swimmers[event.ussNum] === undefined)
-            swimmers[event.ussNum] = {swims:[]};
+                swimmers[event.ussNum] = {swims:[]};
             
             swimmers[event.ussNum].swims.push(event);
+            this.events.add(event.eventNum);
 
             teams[teams.length -1].swimmers = swimmers;
             this.setState({teams: teams});
@@ -167,13 +173,17 @@ class MeetReader extends Component {
         default: break;
       }
     }
+
+    this.eventsList = Array.from(this.events).sort();
+
   }
 
   render() {
 
       const childrenWithProps = React.Children.map(this.props.children,
         (child) => React.cloneElement(child, {
-          teams: this.state.teams
+          teams: this.state.teams,
+          events: this.eventsList
         })
       );
 

@@ -49,6 +49,32 @@ module.exports = {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     },
 
+    parseEventTitle(event) {
+        const sex = (event.sexCode === 'M') ? 'BOYS' : 'GIRLS';
+         let age = '';
+         switch(event.eventAgeCode) {
+            case '1314': 
+                age = '13-14';
+                break;
+            case '15OV':
+                age = '15+';
+                break;
+            case 'UN10':
+                age = 'UNDER 10';
+                break;
+            case '1112':
+                age = '11-12';
+                break;
+            default:
+                age = 'Open??';
+                break;
+         }
+
+         const stroke = this.getStrokeFromCode(event.strokeCode);
+
+         return `#${event.eventNum} ${sex} ${age} ${event.eventDist} ${stroke}`;
+    },
+
 // A0 -- file description record (type of data)
   parseA0: function(line) {
     // const header        = line.substring(0,2);

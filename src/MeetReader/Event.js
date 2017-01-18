@@ -1,21 +1,20 @@
 import React from 'react';
-import Swim from './Swim';
 import U from './utils';
-import {Link} from 'react-router';
+import EventSwim from './EventSwim';
 
-const Swimmer = (props) => {
-    const swim = props.swimmer.swims[0];
+const Event = (props) => {
+    const event = props.event;
+
     return (
         <div className="mdl-cell mdl-cell--12-col swimmer">
             <div className="swimmer-header">
-                <h4>{swim.swimmerName}</h4>
-                <h6>{`Age ${swim.swimmerAge}`}</h6>
+                <h4>{U.parseEventTitle(event[0])}</h4>
             </div>
             
             <table className="mdl-data-table" width="100%">
             <thead>
                 <tr>
-                    <th>Event</th>
+                    <th>Name</th>
                     <th>Seed Time</th>
                     <th>Prelim Time</th>
                     <th>Finals Time</th>
@@ -24,8 +23,8 @@ const Swimmer = (props) => {
                 </tr>
             </thead>
             
-                {props.swimmer.swims.map( swim => {
-                    return <Swim key={U.guid()} swim={swim} />
+                {event.map( swimmer => {
+                    return <EventSwim key={U.guid()} swimmer={swimmer} />
                 })}
             
             </table>
@@ -33,4 +32,4 @@ const Swimmer = (props) => {
     );
 }
 
-export default Swimmer;
+export default Event;

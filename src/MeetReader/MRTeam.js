@@ -21,7 +21,3 @@ class MRTeam extends Component {
 }
 
 export default MRTeam;
-
-//  { this.props.teams.map(team => 
-//                     {return <Team key={team.teamCode} team={team} />}
-//                 )}
