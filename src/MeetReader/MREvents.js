@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import U from './utils';
 import Event from './Event';
 
 class MREvents extends Component {
@@ -24,11 +23,13 @@ class MREvents extends Component {
             for(let team of teams) {
 
                 for(let s in team.swimmers) {
-                    let swimmer = team.swimmers[s];
+                    if( team.swimmers.hasOwnProperty(s)){
+                        let swimmer = team.swimmers[s];
 
-                    for(let swim of swimmer.swims) {
-                        if(swim.eventNum === eventNum) 
-                            events[eventNum].push(swim);
+                        for(let swim of swimmer.swims) {
+                            if(swim.eventNum === eventNum) 
+                                events[eventNum].push(swim);
+                        }
                     }
                 }
             }

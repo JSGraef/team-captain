@@ -1,3 +1,4 @@
+/* eslint-disable */
 
 module.exports = {
     getStrokeFromCode: function(code) {

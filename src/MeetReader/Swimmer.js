@@ -1,7 +1,6 @@
 import React from 'react';
 import Swim from './Swim';
 import U from './utils';
-import {Link} from 'react-router';
 
 const Swimmer = (props) => {
     const swim = props.swimmer.swims[0];
