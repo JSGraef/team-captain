@@ -63,6 +63,8 @@ const Event = (props) => {
         return diff;
     });
 
+    let place = 0;
+
     return (
         <div className="mdl-cell mdl-cell--12-col swimmer">
             <div className="swimmer-header">
@@ -72,6 +74,7 @@ const Event = (props) => {
             <table className="mdl-data-table" width="100%">
             <thead>
                 <tr>
+                    <th>Place</th>
                     <th>Name</th>
                     <th>Seed Time</th>
                     <th>Prelim Time</th>
@@ -82,7 +85,8 @@ const Event = (props) => {
             </thead>
             
                 {swimmersInOrder.map( swimmer => {
-                    return <EventSwim key={U.guid()} swimmer={swimmer} />
+                    place++;
+                    return <EventSwim key={U.guid()} place={place} swimmer={swimmer} />
                 })}
             
             </table>

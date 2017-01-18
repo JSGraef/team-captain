@@ -13,11 +13,11 @@ class MeetReader extends Component {
       lines: [],
       meet: {},
       meetInfo: {},
-      teams: []
+      teams: [],
+      eventsList: []
     }
 
     this.events = new Set();
-    this.eventsList = [];
 
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.readFile = this.readFile.bind(this);
@@ -174,7 +174,7 @@ class MeetReader extends Component {
       }
     }
 
-    this.eventsList = Array.from(this.events).sort();
+    this.setState({eventsList: Array.from(this.events).sort()});
 
   }
 
@@ -183,7 +183,7 @@ class MeetReader extends Component {
       const childrenWithProps = React.Children.map(this.props.children,
         (child) => React.cloneElement(child, {
           teams: this.state.teams,
-          events: this.eventsList
+          events: this.state.eventsList
         })
       );
 

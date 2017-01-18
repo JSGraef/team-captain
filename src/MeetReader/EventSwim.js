@@ -17,6 +17,7 @@ const EventSwim = (props) => {
     return (
         <tbody>
         <tr>
+            <td>{props.place}</td>
             <td className="swim-eventTitle mdl-data-table__cell--non-numeric"><Link to={`/meetreader/swimmer/${swim.ussNum}`}>{swim.swimmerName}</Link></td>
             <td>{swim.seedTime}</td>
             <td>{swim.prelimTime}</td>
