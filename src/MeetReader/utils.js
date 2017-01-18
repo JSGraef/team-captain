@@ -17,7 +17,7 @@ module.exports = {
 
   timeDiff: function(time1, time2) {
     if(time1.includes('NT') || time2.includes('NT') || time2.includes('NS') || time1.includes('NS') )
-        return "";
+        return '';
 
     const t1 = time1.split(':');
     const t2 = time2.split(':');
