@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './MeetReader.css';
 import TeamList from './TeamList';
-import EventList from './EventList';
+import MRDashboard from './MRDashboard';
 import U from './utils';
 import {Link} from 'react-router';
 
@@ -250,14 +250,13 @@ class MeetReader extends Component {
                   {return <TeamList key={team.teamCode} team={team} />}
               )}
               <hr />
-              <Link to="/meetreader/events">All Events</Link> 
-               { this.state.events.map(event => 
-                  {return <EventList key={U.guid()} event={event} />}
-              )}             
+              <Link to="/meetreader">Event List</Link> 
+              <hr />
+              <Link to="/meetreader/events">All Events</Link>                       
             </div>
           </div>
           <div className="mdl-cell mdl-cell--11-col">
-              { childrenWithProps }
+              { childrenWithProps || <MRDashboard events={this.state.events} /> }
           </div>
         </div>
     );
