@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import './MeetReader.css';
 import TeamList from './TeamList';
+import EventList from './EventList';
 import U from './utils';
 import {Link} from 'react-router';
 
@@ -14,10 +15,8 @@ class MeetReader extends Component {
       meet: {},
       meetInfo: {},
       teams: [],
-      eventsList: []
+      events: []
     }
-
-    this.events = new Set();
 
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.readFile = this.readFile.bind(this);
@@ -33,8 +32,6 @@ class MeetReader extends Component {
       meetInfo: {},
       teams: []
     });
-
-    this.events.clear();
   }
 
   onFormSubmit(e) {
@@ -67,6 +64,7 @@ class MeetReader extends Component {
 
   parseFileContents() {
     const lines = this.state.lines;
+    let events = new Set();
 
     // Read file line by line and do something with it
     for(let line of lines) {
@@ -104,7 +102,7 @@ class MeetReader extends Component {
                 swimmers[event.ussNum] = {swims:[]};
             
             swimmers[event.ussNum].swims.push(event);
-            this.events.add(event.eventNum);
+            events.add(event.eventNum);
 
             teams[teams.length -1].swimmers = swimmers;
             this.setState({teams: teams});
@@ -148,7 +146,7 @@ class MeetReader extends Component {
             // Swimmer was never entered in, just skip it for now
             // TODO - need to handle this
             if(swimmer === undefined) 
-                return;
+                break;
             
             swimmer.swims[ swimmer.swims.length -1 ].splits.push(splitRec);
 
@@ -174,8 +172,41 @@ class MeetReader extends Component {
       }
     }
 
-    this.setState({eventsList: Array.from(this.events).sort()});
+    // TODO do i need to sort?
+    const eventlist = this.getEvents(Array.from(events).sort());
+    this.setState({events: eventlist});
+  }
 
+  // Puts swimmers in every event they swam
+  getEvents(eventNums) {
+       const teams = this.state.teams;
+        let events = [[]];
+
+        // for each event, go through teams -> swimmers and pull out who swam what.
+        // A number of ways to make this faster:
+        // -- Check event age and compare to swimmer age
+
+        for(let eventNum of eventNums) {
+            events[eventNum] = [];
+            for(let team of teams) {
+
+                for(let s in team.swimmers) {
+                    if( team.swimmers.hasOwnProperty(s)){
+                        let swimmer = team.swimmers[s];
+
+                        for(let swim of swimmer.swims) {
+                            if(swim.eventNum === eventNum) 
+                                events[eventNum].push(swim);
+                        }
+                    }
+                }
+            }
+
+            if(teams.length === 0 )
+                return [];
+        }
+
+        return events;
   }
 
   render() {
@@ -183,7 +214,7 @@ class MeetReader extends Component {
       const childrenWithProps = React.Children.map(this.props.children,
         (child) => React.cloneElement(child, {
           teams: this.state.teams,
-          events: this.state.eventsList
+          events: this.state.events
         })
       );
 
@@ -219,7 +250,10 @@ class MeetReader extends Component {
                   {return <TeamList key={team.teamCode} team={team} />}
               )}
               <hr />
-              <Link to="/meetreader/events">Events</Link>
+              <Link to="/meetreader/events">All Events</Link> 
+               { this.state.events.map(event => 
+                  {return <EventList key={U.guid()} event={event} />}
+              )}             
             </div>
           </div>
           <div className="mdl-cell mdl-cell--11-col">

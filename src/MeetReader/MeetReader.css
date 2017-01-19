@@ -62,8 +62,8 @@ tr [colspan="4"] {
 }
 @media (min-width: 840px) {
 .sidenav {
-  position: fixed;
-  width: 120px;
+  position: absolute;
+  width: 200px;
   left: 16px;
   top: 50px;
   z-index: 2000;

@@ -15,6 +15,7 @@ import Home from './Home';
 import PaceCalculator from './PaceCalculator';
 import MeetReader from './MeetReader/MeetReader';
 import MREvents from './MeetReader/MREvents';
+import MREvent from './MeetReader/MREvent';
 import MRTeam from './MeetReader/MRTeam';
 import MRSwimmer from './MeetReader/MRSwimmer';
 import Dashboard from './Dashboard';
@@ -33,6 +34,7 @@ ReactDOM.render((
       <Route path="pacecalculator" component={PaceCalculator} />
       <Route path="meetreader" component={MeetReader}>
         <Route path="events" component={MREvents} />
+        <Route path="events/:eventid" component={MREvent} />
         <Route path="team/:teamid" component={MRTeam} />
         <Route path="swimmer/:swimmerid" component={MRSwimmer} />
       </Route>
