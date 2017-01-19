@@ -54,20 +54,30 @@ module.exports = {
         const sex = (event.sexCode === 'M') ? 'BOYS' : 'GIRLS';
          let age = '';
          switch(event.eventAgeCode) {
-            case '1314': 
-                age = '13-14';
-                break;
-            case '15OV':
-                age = '15+';
+            case 'UN08':
+                age = 'UNDER 8';
                 break;
             case 'UN10':
                 age = 'UNDER 10';
                 break;
+            case '0910':
+                age = '9-10';
+                break;
             case '1112':
                 age = '11-12';
                 break;
+            case '1314': 
+                age = '13-14';
+                break;
+            case '13OV':
+                age = '13+';
+                break;
+            case '15OV':
+                age = '15+';
+                break;           
             default:
-                age = 'Open??';
+                console.log(event.eventAgeCode);
+                age = event.eventAgeCode;
                 break;
          }
 
