@@ -44,6 +44,7 @@ class MeetReader extends Component {
 
     this.readFile(file);
     this.setState({filename: file.name});
+    this.props.router.push('/meetreader');
   }
 
   readFile(file) {
