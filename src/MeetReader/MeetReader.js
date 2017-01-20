@@ -12,7 +12,6 @@ class MeetReader extends Component {
 
     this.state = {
       lines: [],
-      meet: {},
       meetInfo: {},
       teams: [],
       events: []
@@ -28,7 +27,6 @@ class MeetReader extends Component {
   initialize() {
     this.setState({
       lines: [],
-      meet: {},
       meetInfo: {},
       teams: []
     });
