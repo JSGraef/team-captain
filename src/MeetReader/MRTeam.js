@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Team from './Team';
 
+// Shows <Team> of URL Team ID
 class MRTeam extends Component {
 
     render() {

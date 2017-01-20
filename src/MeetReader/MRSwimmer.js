@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Swimmer from './Swimmer';
 
+// Shows swimmer info based on URL input of swimmer's USSNum
 class MRSwimmer extends Component {
 
     render() {

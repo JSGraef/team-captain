@@ -7,13 +7,10 @@ const Event = (props) => {
 
     // Order swimmers by place
     let swimmersInOrder = event.sort( (a,b) => {
-        //if(a.finalsTime === '') return false;
-        // const af = a.finalsTime.slice(0,-1);
-        // const bf = b.finalsTime.slice(0,-1);
 
         let diff = U.timeDiff(b.finalsTime, a.finalsTime);
 
-
+        // TO COMPARE TIMES:
         // If a finals time exists, use that.
         // if one finals and one prelim, use finals.
         // if two prelim, compare prelims
@@ -27,21 +24,17 @@ const Event = (props) => {
             if(b.finalsTime.includes('DQ') || b.prelimTime.includes('DQ') )
                 return -1;
 
-            //  I consider a finals time of NS (no swim) to be on top of the prelims times
-            let hasFinalTimeA = a.finalsTime.includes('NS');
-            let hasFinalTimeB = a.finalsTime.includes('NS');
+            //  I consider a finals time of NS (no swim) to be on top of the prelims times (it should anyway)
+            const hasFinalTimeB = a.finalsTime.includes('NS');
+            const hasFinalTimeA = a.finalsTime.includes('NS');
             if(hasFinalTimeA && !hasFinalTimeB)
                 return 1;
             if(hasFinalTimeB && !hasFinalTimeA)
                 return -1;
 
             // Since we don't have finals times, must try to compare prelim times
-            let prelimA = false;
-            let prelimB = false;
-            if(a.finalsTime === '' || a.finalsTime === 'Y' || a.finalsTime.includes('NS')) 
-                prelimA = true;
-            if(b.finalsTime === '' || b.finalsTime === 'Y' || b.finalsTime.includes('NS'))
-                prelimB = true;
+            const prelimA = (a.finalsTime === '' || a.finalsTime === 'Y' || a.finalsTime.includes('NS'));
+            const prelimB = (b.finalsTime === '' || b.finalsTime === 'Y' || b.finalsTime.includes('NS'));
 
             // If both are prelim times, compare them
             if(prelimA && prelimB) {
@@ -53,6 +46,7 @@ const Event = (props) => {
                 if(b.prelimTime === '' || b.prelimTime === 'Y' || b.prelimTime.includes('NS'))
                     diff = -1;
 
+                // One of the prelim times is messed up - no information. So 
                 if(diff === '')
                     return 1;
             }

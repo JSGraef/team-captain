@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Event from './Event';
 
-
+// Shows event based on URL event ID
 class MREvent extends Component {
 
     render() {

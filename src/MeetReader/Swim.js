@@ -2,6 +2,7 @@ import React from 'react';
 import U from './utils';
 import Splits from './Splits';
 
+// Shows a particular swim from a list of swims
 const Swim = (props) => {
     const swim = props.swim;
 

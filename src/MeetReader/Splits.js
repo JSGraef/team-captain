@@ -1,6 +1,8 @@
 import React from 'react';
 import U from './utils';
 
+// Gets the splits of a swim.
+// TODO this is very basic and there's a lot of work to be done here
 const Splits = (props) => {
     const allSplits = props.splits;
 

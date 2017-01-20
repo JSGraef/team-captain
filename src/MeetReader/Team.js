@@ -1,6 +1,7 @@
 import React from 'react';
 import Swimmer from './Swimmer';
 
+// Shows all swimmers and their swims for a provided team
 const Team = (props) => {
     const swimmerKeys = Object.keys(props.team.swimmers);
     return (            

@@ -2,6 +2,7 @@ import React from 'react';
 import Swim from './Swim';
 import U from './utils';
 
+// Shows info about swimmer and all their swims
 const Swimmer = (props) => {
     const swim = props.swimmer.swims[0];
     return (

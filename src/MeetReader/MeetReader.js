@@ -173,8 +173,7 @@ class MeetReader extends Component {
       }
     }
 
-    // TODO do i need to sort?
-    const eventlist = this.getEvents(Array.from(events).sort());
+    const eventlist = this.getEvents(Array.from(events));
     this.setState({events: eventlist});
   }
 
