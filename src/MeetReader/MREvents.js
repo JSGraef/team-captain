@@ -1,22 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Event from './Event';
 
-class MREvents extends Component {
-
-    renderEvent(event) {
-        if(event[0] === undefined || event === [])
-            return;
-        
-        return <Event key={event[0].eventNum} event={event} />
-    }
-
-    render() {
-        return (
-            <div>
-                { this.props.events.map( e => {return this.renderEvent(e)}) }
-            </div>
-        );
-    }
+// Shows all event cards
+const MREvents = (props) => {
+    return (
+        <div>
+            { props.events.map( e => {
+                if(e[0] === undefined || e === [])
+                    return null;
+                
+                return <Event key={e[0].eventNum} event={e} />
+            }) }
+        </div>
+    );
 }
 
 export default MREvents;

@@ -247,9 +247,7 @@ class MeetReader extends Component {
           <div className="mdl-cell mdl-cell--1-col">
             <div className="sidenav">
               <h6>TEAMS</h6>
-              { this.state.teams.map(team => 
-                  {return <TeamList key={team.teamCode} team={team} />}
-              )}
+              <TeamList teams={this.state.teams} />
               <hr />
               <Link to="/meetreader">Event List</Link> 
               <hr />
