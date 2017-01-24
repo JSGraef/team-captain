@@ -27,10 +27,14 @@ const Swim = (props) => {
                 <td className={timeDiffClass}>{timeDiff}</td>
                 <td>{swim.pointsScored}</td>
             </tr>
-             <tr>
-                <td colSpan='2' className="swim-splitTitle">SPLITS:</td>
-                <Splits splits={swim.splits} />
-            </tr>
+            { swim.splits.map( s => {
+                return (
+                    <tr key={U.guid()}>
+                        <td colSpan='2' className="swim-splitTitle">SPLITS:</td>
+                        <Splits splits={s} />
+                    </tr>
+            )})}
+             
         </tbody>
     )}
 
