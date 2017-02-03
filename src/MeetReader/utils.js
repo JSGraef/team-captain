@@ -51,7 +51,13 @@ module.exports = {
     },
 
     parseEventTitle(event) {
-        const sex = (event.sexCode === 'M') ? 'BOYS' : 'GIRLS';
+        let sex = '';
+        switch(event.sexCode) {
+          case 'M': sex = 'BOYS'; break;
+          case 'F': sex = 'GIRLS'; break;
+          case 'X': sex = 'MIXED'; break;
+          default: break;
+        }
          let age = '';
          switch(event.eventAgeCode) {
             case 'UN08':
@@ -59,6 +65,15 @@ module.exports = {
                 break;
             case 'UN10':
                 age = 'UNDER 10';
+                break;
+            case 'UN12':
+                age = 'UNDER 12';
+                break;
+            case 'UN14':
+                age = 'UNDER 14';
+                break;
+            case 'UNOV':
+                age = '15+';
                 break;
             case '0910':
                 age = '9-10';
@@ -115,8 +130,8 @@ module.exports = {
 
   // B1 -- Meet record (meet name/address)
   parseB1: function(line) {
-    // const header        = line.substring(0,2).trim();
-    // const orgCode       = line.substring(2,3).trim();
+    const header        = line.substring(0,2).trim();
+    const orgCode       = line.substring(2,3).trim();
     const meetName      = line.substring(11,41).trim();
     const meetAddressL1 = line.substring(41,63).trim();
     const meetAddressL2 = line.substring(63,85).trim();
@@ -171,7 +186,7 @@ module.exports = {
 
     const teamRecord = {
       teamCode, teamName, abbrTeamName, teamAddressL1, teamAddressL2, teamCity, teamState, teamZip, countryCode, regionCode, optTeamCode,
-      swimmers: {}
+      swimmers: {}, relays: []
     }
 
     return teamRecord;    
@@ -333,11 +348,11 @@ module.exports = {
     const relTeamName   = line.substring(11,12).trim();
     const teamCode      = line.substring(12,18).trim();
     const numF0Records  = line.substring(18,20).trim();
-    const eventSexCode  = line.substring(20,21).trim();
-    const relayDistance = line.substring(21,25).trim();
+    const sexCode       = line.substring(20,21).trim();
+    const eventDist     = line.substring(21,25).trim();
     const strokeCode    = line.substring(25,26).trim();
-    const eventNumber   = line.substring(26,30).trim();
-    const eventAgeCode  = line.substring(31,34).trim();
+    const eventNum      = line.substring(26,30).trim();
+    const eventAgeCode  = line.substring(30,34).trim();
     const totalAge      = line.substring(34,37).trim();
     const swimDate      = line.substring(37,45).trim();
     const seedTime      = line.substring(45,53).trim();
@@ -356,6 +371,15 @@ module.exports = {
     const finalsPlace   = line.substring(92,95).trim();
     const pointsScored  = line.substring(95,99).trim();
     const eventTimeClass = line.substring(99,102).trim();
+
+    const relay = {
+      relTeamName, teamCode, numF0Records, sexCode, eventDist, strokeCode, eventNum, eventAgeCode, totalAge,
+      swimDate, seedTime, courseCode1, prelimTime, courseCode2, swimoffTime, courseCode3, finalsTime, courseCode4, 
+      prelimHeatNum, prelimLaneNum, finalsHeatNum, finalsLaneNum, prelimPlace, finalsPlace, pointsScored, eventTimeClass,
+      swimmers: [] // swimmers for relay
+    }
+
+    return relay;
   },
 
   // F0 -- Relay Name Record (ID athletes on team)
@@ -371,13 +395,20 @@ module.exports = {
     const swimmerAge    = line.substring(73,75).trim();
     const sexCode       = line.substring(75,76).trim();
     const prelimOrderCode = line.substring(76,77).trim();
-    const swimoffOderCode = line.substring(77,78).trim();
+    const swimoffOrderCode = line.substring(77,78).trim();
     const finalsOrderCode = line.substring(78,79).trim();
     const legTime       = line.substring(79,87).trim();
     const courseCode    = line.substring(87,88).trim();
     const takeoffTime   = line.substring(88,92).trim();
     const ussNumNew     = line.substring(92,106).trim();
     const prefFirstName = line.substring(106,121).trim();
+
+    const relaySwimmer = {
+      teamCode, teamName, swimmerName, ussNum, citizenCode, birthdate, swimmerAge, sexCode, prelimOrderCode,
+      swimoffOrderCode, finalsOrderCode, legTime, courseCode, takeoffTime, ussNumNew, prefFirstName
+    }
+
+    return relaySwimmer;
   },
 
     // G0 -- Splits Record

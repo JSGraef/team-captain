@@ -1,6 +1,7 @@
 import React from 'react';
 import U from './utils';
 import EventSwim from './EventSwim';
+import EventSwimRelay from './EventSwimRelay';
 
 const Event = (props) => {
     const event = props.event;
@@ -12,7 +13,7 @@ const Event = (props) => {
 
         // TO COMPARE TIMES:
         // If a finals time exists, use that.
-        // if one finals and one prelim, use finals.
+        // if one finals and one prelim, finals comes first.
         // if two prelim, compare prelims
 
         // Something's up with the times. One probably does not exist.
@@ -58,6 +59,39 @@ const Event = (props) => {
     });
 
     let place = 0;
+
+    // If we have a relay (which follows a different format)
+    if(swimmersInOrder[0].swimmers !== undefined) {
+        return (
+            <div className="mdl-cell mdl-cell--12-col swimmer">
+                <div className="swimmer-header">
+                    <h4>{U.parseEventTitle(event[0])}</h4>
+                </div>
+                
+                <table className="mdl-data-table" width="100%">
+                <thead>
+                    <tr>
+                        <th>Place</th>
+                        <th>Name</th>
+                        <th>Seed Time</th>
+                        <th>Prelim Time</th>
+                        <th>Finals Time</th>
+                        <th>Time Adjustment</th>
+                        <th>Points Scored</th>
+                    </tr>
+                </thead>
+
+                {swimmersInOrder.map( relay => {
+                    place++;
+                    return <EventSwimRelay key={U.guid()} place={place} relay={relay} />
+                })}
+                
+                
+                </table>
+            </div>
+        );
+    }
+
 
     return (
         <div className="mdl-cell mdl-cell--12-col swimmer">

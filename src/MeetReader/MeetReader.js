@@ -23,7 +23,7 @@ class MeetReader extends Component {
     this.initialize = this.initialize.bind(this);
   }
 
- // If a new file is read, get rid of 100% of the old stuff
+ // If a new file is read, get rid of all the old stuff
   initialize() {
     this.setState({
       lines: [],
@@ -32,6 +32,7 @@ class MeetReader extends Component {
     });
   }
 
+  // When 'submit' is pressed, clear state and read the file
   onFormSubmit(e) {
     e.preventDefault();
     const file = this.refs.file.files[0];
@@ -45,6 +46,7 @@ class MeetReader extends Component {
     this.props.router.push('/meetreader');
   }
 
+  // Reads the file in individual lines and saves the state
   readFile(file) {
     const fr = new FileReader();
     fr.onloadend = (e)=> {
@@ -61,6 +63,8 @@ class MeetReader extends Component {
       this.parseFileContents();
   }
 
+  // For each line in the file, do something with the record
+  // This is the heart of the app and controls everything on file read
   parseFileContents() {
     const lines = this.state.lines;
     let events = new Set();
@@ -131,12 +135,31 @@ class MeetReader extends Component {
             
             break;
         }
-        case 'E0': 
-          U.parseE0(line); 
+        case 'E0': {// relay team 
+          const relayTeam = U.parseE0(line); 
+          let teams = this.state.teams;
+          let relays = teams[teams.length -1].relays;
+          
+          relays.push(relayTeam);
+          events.add(relayTeam.eventNum);
+          
+          teams[teams.length -1].relays = relays;
+          this.setState({teams: teams});
+
           break;
-        case 'F0': 
-          U.parseF0(line); 
+        }
+        case 'F0': {// relay swimmer
+          const relaySwimmer = U.parseF0(line);
+          let teams = this.state.teams;
+          let relays = teams[teams.length -1].relays;
+
+          // Get swimmers for last-entered relay (can assume this)
+          relays[relays.length-1].swimmers.push(relaySwimmer);
+          teams[teams.length -1].relays = relays;
+          this.setState({teams: teams});
+    
           break;
+        }
         case 'G0': {
             const splitRec = U.parseG0(line); 
             let teams = this.state.teams;
@@ -147,9 +170,11 @@ class MeetReader extends Component {
             if(swimmer === undefined) 
                 break;
             
+            // Because all a swimmer's G0 records directly follows their D3, we
+            // can properly assume that the last entered swimmer is the correct one
             swimmer.swims[ swimmer.swims.length -1 ].splits.push(splitRec);
 
-            // Update team with swimmer
+            // Update team with newly built swimmer
             teams[teams.length -1].swimmers[splitRec.ussNum] = swimmer;
             this.setState({teams: teams});
             
@@ -177,7 +202,7 @@ class MeetReader extends Component {
 
   // Puts swimmers in every event they swam
   getEvents(eventNums) {
-       const teams = this.state.teams;
+        const teams = this.state.teams;
         let events = [[]];
 
         // for each event, go through teams -> swimmers and pull out who swam what.
@@ -186,7 +211,19 @@ class MeetReader extends Component {
 
         for(let eventNum of eventNums) {
             events[eventNum] = [];
+            let bContinue = false;
             for(let team of teams) {
+
+                // Try relays first since it's short and we can skip the rest if not needed
+                for( let r of team.relays ) {
+                  if(r.eventNum === eventNum) {
+                    events[eventNum].push(r);
+                    bContinue = true;
+                    break;
+                  }
+                }
+
+                if(bContinue) continue;
 
                 for(let s in team.swimmers) {
                     if( team.swimmers.hasOwnProperty(s)){
