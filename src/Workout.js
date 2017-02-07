@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 // Firebase
-import c from './config/config';
+import {config} from './config/config';
 import Rebase  from 're-base';
-var base = Rebase.createClass(c);
+var base = Rebase.createClass(config);
 
 import { Link } from 'react-router';
 
