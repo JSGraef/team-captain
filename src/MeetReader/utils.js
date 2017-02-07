@@ -1,7 +1,9 @@
 /* eslint-disable */
 
 module.exports = {
-    getStrokeFromCode: function(code) {
+  
+  // Takes stroke code and puts into readable stroke
+  getStrokeFromCode: function(code) {
     let stroke = '';
     switch(code) {
       case '1': stroke = 'Free'; break;
@@ -16,6 +18,7 @@ module.exports = {
     return stroke;
   },
 
+  // Gets difference (in seconds) between two times
   timeDiff: function(time1, time2) {
     if(time1.includes('NT') || time2.includes('NT') || time2.includes('NS') || time1.includes('NS') )
         return '';
@@ -43,6 +46,7 @@ module.exports = {
     return timeDiff;    
   },
 
+  // Generates a random GUID (used for div keys)
   guid: function() {
     function s4() {
         return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
@@ -50,6 +54,7 @@ module.exports = {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     },
 
+    // Takes event code and puts into readable format
     parseEventTitle(event) {
         let sex = '';
         switch(event.sexCode) {
