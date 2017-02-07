@@ -6,6 +6,9 @@ class MREvent extends Component {
 
     render() {
         const events = this.props.events;
+        if(events === undefined)
+            return <h4>Couldn't find event</h4>
+
         const eventid = this.props.routeParams.eventid;
 
         if(events.length === 1)

@@ -4,6 +4,9 @@ import U from './utils';
 
 // Lists the individual event
 const EventList = (props) => {
+    if(props.events === undefined)
+        return <h4>Couldn't find event list</h4>
+
     return ( 
          <ul>
             { props.events.map(event => 

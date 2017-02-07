@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Event from '../MeetReader/Swim';
+import Swim from '../MeetReader/Swim';
 
 describe('<Swim />', () => {
   it('renders without crashing', () => {

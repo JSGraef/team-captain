@@ -3,6 +3,9 @@ import Event from './Event';
 
 // Shows all event cards
 const MREvents = (props) => {
+    if(props.events === undefined)
+        return <h4>Couldn't find event</h4>
+
     return (
         <div>
             { props.events.map( e => {

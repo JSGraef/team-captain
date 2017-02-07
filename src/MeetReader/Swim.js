@@ -7,6 +7,9 @@ import {Link} from 'react-router';
 const Swim = (props) => {
     const {swim} = props;
 
+    if(swim === undefined)
+        return <h4>Couldn't find swim</h4>
+
     const finalsTime = swim.finalsTime.substring(0,swim.finalsTime.length-1);
     let timeDiff = U.timeDiff(swim.seedTime, swim.finalsTime);
     let timeDiffClass = 'swim-diffNeg';

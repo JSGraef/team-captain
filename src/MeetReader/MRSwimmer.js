@@ -6,6 +6,10 @@ class MRSwimmer extends Component {
 
     render() {
         const teams = this.props.teams;
+
+        if(teams === undefined)
+            return <h4>Couldn't find teams</h4>
+
         let swimmer = {};
         const swimmeridMod = this.props.routeParams.swimmerid.slice(0,-2);
         const swimmerid = this.props.routeParams.swimmerid;

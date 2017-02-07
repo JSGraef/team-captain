@@ -5,6 +5,9 @@ import {Link} from 'react-router';
 
 // props.relay comes in as an array of relay teams
 const EventSwimRelay = (props) => {
+    if(props.relay === undefined)
+        return <h4>Couldn't find relay</h4>
+
     const relay = props.relay;
 
     const finalsTime = relay.finalsTime.substring(0, relay.finalsTime.length-1);

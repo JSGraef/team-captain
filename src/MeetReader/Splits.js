@@ -6,6 +6,9 @@ import U from './utils';
 const Splits = (props) => {
     const s = props.splits;
 
+    if(s === undefined)
+        return <h4>Couldn't find splits</h4>
+
     let splits = [];
     splits.push( s.splitTime1 );
     splits.push( s.splitTime2 );

@@ -4,6 +4,9 @@ import EventSwim from './EventSwim';
 import EventSwimRelay from './EventSwimRelay';
 
 const Event = (props) => {
+    if(props.event === undefined)
+        return <h4>Couldn't find event</h4>
+
     const event = props.event;
 
     // Order swimmers by place

@@ -4,6 +4,9 @@ import Splits from './Splits';
 import {Link} from 'react-router';
 
 const EventSwim = (props) => {
+    if(props.swimmer === undefined)
+        return <h4>Couldn't find event</h4>
+
     const swim = props.swimmer;
 
     const finalsTime = swim.finalsTime.substring(0,swim.finalsTime.length-1);

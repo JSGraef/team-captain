@@ -4,7 +4,11 @@ import U from './utils';
 
 // Shows info about swimmer and all their swims
 const Swimmer = (props) => {
+    if(props.swimmer === undefined)
+        return <h4>Couldn't find swimmer</h4>
+
     const swim = props.swimmer.swims[0];
+
     return (
         <div className="mdl-cell mdl-cell--12-col swimmer">
             <div className="swimmer-header">
