@@ -9,6 +9,7 @@
     "babel-preset-react": "^6.11.1",
     "chai": "^3.5.0",
     "enzyme": "^2.4.1",
+    "identity-obj-proxy": "^3.0.0",
     "jest-cli": "*",
     "react-addons-test-utils": "^15.3.1",
     "react-scripts": "^0.8.5",
@@ -33,7 +34,13 @@
     "extends": "./node_modules/react-scripts/config/eslint.js"
   },
   "jest": {
-    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(es6|js|json)$"
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(es6|js|json)$",
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "transform": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/fileTransformer.js",
+      ".*": "<rootDir>/node_modules/babel-jest"
+    }
   }
 }
