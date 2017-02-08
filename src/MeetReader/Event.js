@@ -89,7 +89,6 @@ const Event = (props) => {
                     return <EventSwimRelay key={U.guid()} place={place} relay={relay} />
                 })}
                 
-                
                 </table>
             </div>
         );

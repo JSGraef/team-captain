@@ -5,7 +5,7 @@ import {Link} from 'react-router';
 
 const EventSwim = (props) => {
     if(props.swimmer === undefined)
-        return <h4>Couldn't find event</h4>
+        return <h4>Couldn't find swimmer</h4>
 
     const swim = props.swimmer;
 
