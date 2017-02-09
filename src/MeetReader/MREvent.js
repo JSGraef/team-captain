@@ -8,9 +8,6 @@ class MREvent extends Component {
         const events = this.props.events;
         if(events === undefined)
             return <h4>Couldn't find event</h4>
-
-        if(this.props.routeParams === undefined)
-            return <h4>Couldn't find that event</h4>
         
         const eventid = this.props.routeParams.eventid;
 
@@ -23,14 +20,14 @@ class MREvent extends Component {
         for(let e of events) {
             if(e === undefined || e.length === 0)
                 continue;
-                
+
             if( e[0].eventNum === eventid) {
                 event = e;
                 break;
             } 
         }
 
-        if(events.length === 0 || event === {} || event === undefined)
+        if(events.length === 0 || Object.keys(event).length === 0 || event === undefined)
             return <h4>Couldn't find that event</h4>
 
         return <Event event={event} />

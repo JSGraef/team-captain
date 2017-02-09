@@ -7,7 +7,8 @@ class MRTeam extends Component {
     render() {
         const teams = this.props.teams;
         if(teams === undefined)
-            return <h4>Couldn't find teams</h4>
+            return <h4>Couldn't find that team</h4>
+
         let team = {};
 
         for(let t of teams) {
@@ -16,7 +17,7 @@ class MRTeam extends Component {
                 break;
             }
         }
-        if(teams.length === 0 || team === {})
+        if(teams.length === 0 || Object.keys(team).length === 0 || team === undefined)
             return <h4>Couldn't find that team</h4>
 
         return <Team key={team.teamCode} team={team} />

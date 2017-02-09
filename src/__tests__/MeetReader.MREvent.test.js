@@ -18,12 +18,12 @@ describe('<MREvent />', () => {
   });
 
   it('renders invalid event gracefully', () => {
-    const wrapper = shallow(<MREvent events={events} />);
+    const wrapper = shallow(<MREvent events={events} routeParams={{eventid: 'INVALID'}} />);
     expect(wrapper.contains("Couldn't find that event")).toEqual(true);
   });
 
   it('renders swim event', () => {
-    const wrapper = shallow(<MREvent events={events} routeParams={{eventid: 1}} />);
+    const wrapper = shallow(<MREvent events={events} routeParams={{eventid: '3'}} />);
     expect(wrapper.find(Event).length).toBe(1);
   });
 });

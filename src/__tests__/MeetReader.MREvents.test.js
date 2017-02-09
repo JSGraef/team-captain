@@ -17,7 +17,7 @@ describe('<MREvents />', () => {
     expect(wrapper.contains(text)).toEqual(true);
   });
 
-  it('renders swim event', () => {
+  it('renders all swim events', () => {
     const wrapper = shallow(<MREvents events={events} />);
     expect(wrapper.find(Event).length).toBe(6);
   });

@@ -9,8 +9,6 @@ const EventSwimRelay = (props) => {
         return <h4>Couldn't find relay</h4>
 
     const relay = props.relay;
-
-    const finalsTime = relay.finalsTime.substring(0, relay.finalsTime.length-1);
     let timeDiff = U.timeDiff(relay.seedTime, relay.finalsTime);
     let timeDiffClass = 'swim-diffNeg';
     if(timeDiff > 0) {
@@ -25,7 +23,7 @@ const EventSwimRelay = (props) => {
             <td className="swim-eventTitle mdl-data-table__cell--non-numeric">{relay.teamCode} {relay.relTeamName}</td>
             <td>{relay.seedTime}</td>
             <td>{relay.prelimTime}</td>
-            <td className="swim-finalTime">{finalsTime}</td>
+            <td className="swim-finalTime">{relay.finalsTime}</td>
             <td className={timeDiffClass}>{timeDiff}</td>
             <td>{relay.pointsScored}</td>
         </tr>

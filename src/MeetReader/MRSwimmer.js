@@ -8,7 +8,7 @@ class MRSwimmer extends Component {
         const teams = this.props.teams;
 
         if(teams === undefined)
-            return <h4>Couldn't find teams</h4>
+            return <h4>Couldn't find that swimmer</h4>
 
         let swimmer = {};
         const swimmeridMod = this.props.routeParams.swimmerid.slice(0,-2);
@@ -26,7 +26,7 @@ class MRSwimmer extends Component {
             }
         }
 
-        if(teams.length === 0 || swimmer === {} || swimmer === undefined)
+        if(teams.length === 0 || Object.keys(swimmer).length === 0 || swimmer === undefined)
             return <h4>Couldn't find that swimmer</h4>
 
         return <Swimmer key={swimmer.ussNum} swimmer={swimmer} />
