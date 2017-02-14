@@ -108,8 +108,8 @@ module.exports = {
 
 // A0 -- file description record (type of data)
   parseA0: function(line) {
-    // const header        = line.substring(0,2);
-    // const orgCode       = line.substring(2,3);
+    const header        = line.substring(0,2);
+    const orgCode       = line.substring(2,3);
     const sdifVers      = line.substring(3,11);
     const fileCode      = line.substring(11,13);
     const software      = line.substring(43,63);

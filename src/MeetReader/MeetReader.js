@@ -43,6 +43,8 @@ class MeetReader extends Component {
 
     const fileName = file.name;
     var ext = fileName.substr(fileName.lastIndexOf('.') + 1);
+
+    // First line of defense against reading files we don't want
     if(ext === 'sd3' || ext === 'cl2') {
       this.readFile(file);
       this.setState({filename: file.name});
@@ -50,7 +52,7 @@ class MeetReader extends Component {
     }
     
     // TODO tell user that we just ignored a file
-    
+
   }
 
   // Reads the file in individual lines and saves the state
@@ -60,6 +62,11 @@ class MeetReader extends Component {
       let contents = e.target.result;
       this.setState({filetext: contents});
       let lines = contents.split(/\r\n|\r|\n/);
+
+      // Another line of defense against corrupt files
+      if(lines.length < 2)
+        return;
+
       this.setState({lines: lines});
     };
     fr.readAsText(file);
@@ -199,7 +206,9 @@ class MeetReader extends Component {
         case 'Z0': 
           U.parseJ0(line); 
           break;
-        default: break;
+        default: 
+          // Something's corrupted - tell user? Abort reading file?
+          return;
       }
     }
 
