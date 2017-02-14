@@ -41,9 +41,16 @@ class MeetReader extends Component {
     
     this.initialize();
 
-    this.readFile(file);
-    this.setState({filename: file.name});
-    this.props.router.push('/meetreader');
+    const fileName = file.name;
+    var ext = fileName.substr(fileName.lastIndexOf('.') + 1);
+    if(ext === 'sd3' || ext === 'cl2') {
+      this.readFile(file);
+      this.setState({filename: file.name});
+      this.props.router.push('/meetreader');
+    }
+    
+    // TODO tell user that we just ignored a file
+    
   }
 
   // Reads the file in individual lines and saves the state
