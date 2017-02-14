@@ -208,7 +208,7 @@ class MeetReader extends Component {
           break;
         default: 
           // Something's corrupted - tell user? Abort reading file?
-          return;
+          break;
       }
     }
 
