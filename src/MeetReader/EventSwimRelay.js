@@ -1,7 +1,7 @@
 import React from 'react';
 import U from './utils';
-import Splits from './Splits';
-import {Link} from 'react-router';
+//import Splits from './Splits';
+//import {Link} from 'react-router';
 
 // props.relay comes in as an array of relay teams
 const EventSwimRelay = (props) => {
