@@ -94,7 +94,6 @@ const Event = (props) => {
         );
     }
 
-
     return (
         <div className="mdl-cell mdl-cell--12-col swimmer">
             <div className="swimmer-header">
@@ -106,6 +105,7 @@ const Event = (props) => {
                 <tr>
                     <th>Place</th>
                     <th>Name</th>
+                    <th>Team</th>
                     <th>Seed Time</th>
                     <th>Prelim Time</th>
                     <th>Finals Time</th>
@@ -116,7 +116,20 @@ const Event = (props) => {
             
                 {swimmersInOrder.map( swimmer => {
                     place++;
-                    return <EventSwim key={U.guid()} place={place} swimmer={swimmer} />
+                    let team='';
+
+                    if(props.teams !== undefined){
+                        const swimmerid = swimmer.ussNum;
+
+                        for(let t of props.teams) {
+                            if( swimmerid in t.swimmers) {
+                                team = t.teamCode;
+                                break;    
+                            }
+                        }
+                    }
+
+                    return <EventSwim key={U.guid()} place={place} swimmer={swimmer} team={team}/>
                 })}
             
             </table>

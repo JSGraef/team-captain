@@ -10,7 +10,7 @@ const MRDashboard = (props) => {
     return (            
         <div>
             <h4>Event List</h4>
-            <EventList key={U.guid()} events={props.events} />
+            <EventList key={U.guid()} {...props} />
         </div>
     );
 }

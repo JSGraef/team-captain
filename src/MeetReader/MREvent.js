@@ -5,7 +5,7 @@ import Event from './Event';
 class MREvent extends Component {
 
     render() {
-        const events = this.props.events;
+        const {events, teams} = this.props;
         if(events === undefined)
             return <h4>Couldn't find event</h4>
         
@@ -30,7 +30,7 @@ class MREvent extends Component {
         if(events.length === 0 || Object.keys(event).length === 0 || event === undefined)
             return <h4>Couldn't find that event</h4>
 
-        return <Event event={event} />
+        return <Event event={event} teams={teams} />
     }
 }
 

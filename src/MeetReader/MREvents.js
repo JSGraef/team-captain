@@ -12,7 +12,7 @@ const MREvents = (props) => {
                 if(e[0] === undefined || e === [])
                     return null;
                 
-                return <Event key={e[0].eventNum} event={e} />
+                return <Event key={e[0].eventNum} event={e} {...props} />
             }) }
         </div>
     );

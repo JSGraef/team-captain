@@ -339,7 +339,7 @@ class MeetReader extends Component {
             </div>
           </div>
           <div className="mdl-cell mdl-cell--11-col">
-              { childrenWithProps || <MRDashboard events={this.state.events} /> }
+              { childrenWithProps || <MRDashboard events={this.state.events} teams={this.state.teams} /> }
           </div>
         </div>
     );
