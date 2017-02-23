@@ -21,9 +21,11 @@ const Splits = (props) => {
     splits.push( s.splitTime9 );
     splits.push( s.splitTime10 );
 
+    const prelimOrFinal = (s.prelimFinalCode === "F") ? 'FINALS' : 'PRELIMS';
 
     return (
         <td colSpan="4" className="swim-splitTd">
+            <span className='swim-split'>{prelimOrFinal}</span>
             { splits.map( split => {
                 return <span key={U.guid()} className='swim-split'>{split}</span>
             })}

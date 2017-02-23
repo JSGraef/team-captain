@@ -19,7 +19,8 @@ describe('<Splits />', () => {
 
   it('renders up to 10 splits', () => {
     const wrapper = shallow(<Splits splits={swim.splits[0]} />);
-    expect(wrapper.find('span').length).toBe(10);
+    // +1 because one 'split' is 'finals' or 'prelims'
+    expect(wrapper.find('span').length).toBe(11);
   });
 
   it('renders proper split times', () => {
