@@ -11,6 +11,9 @@ const Swim = (props) => {
         return <h4>Couldn't find swim</h4>
 
     const finalsTime = swim.finalsTime.substring(0,swim.finalsTime.length-1);
+
+    // TODO: If finals time doesn't exist (or is NS) use prelim time (if exists)
+
     let timeDiff = U.timeDiff(swim.seedTime, swim.finalsTime);
     let timeDiffClass = 'swim-diffNeg';
     if(timeDiff > 0) {

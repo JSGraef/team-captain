@@ -6,6 +6,10 @@ import MRDashboard from './MRDashboard';
 import U from './utils';
 import {Link} from 'react-router';
 
+import DropzoneComponent from 'react-dropzone-component';
+import 'react-dropzone-component/styles/filepicker.css';
+import 'dropzone/dist/min/dropzone.min.css';
+
 class MeetReader extends Component {
   constructor() {
     super();
@@ -36,6 +40,27 @@ class MeetReader extends Component {
   onFormSubmit(e) {
     e.preventDefault();
     const file = this.refs.file.files[0];
+    if(file === 'undefined') 
+      return;
+    
+    this.initialize();
+
+    const fileName = file.name;
+    var ext = fileName.substr(fileName.lastIndexOf('.') + 1);
+
+    // First line of defense against reading files we don't want
+    if(ext === 'sd3' || ext === 'cl2') {
+      this.readFile(file);
+      this.setState({filename: file.name});
+      this.props.router.push('/meetreader');
+    }
+    
+    // TODO tell user that we just ignored a file
+
+  }
+
+    // When 'submit' is pressed, clear state and read the file
+  onDragDrop(file) {
     if(file === 'undefined') 
       return;
     
@@ -270,15 +295,24 @@ class MeetReader extends Component {
       );
 
     if(this.state.lines.length === 0) {
+
+        var componentConfig = {
+          iconFiletypes: ['.cl2', '.sd3'],
+          showFiletypeIcon: true,
+          postUrl: 'no-url'
+        };
+        var djsConfig = { autoProcessQueue: false }
+        var eventHandlers = { addedfile: (file) => this.onDragDrop(file)}
+
         return (
           <div className="mdl-grid">
             <div className="mdl-cell mdl-cell--12-col">
-                <form onSubmit={this.onFormSubmit}>
-                    <input type="file" ref="file" name="file" id="file"/>
-                    <button type="submit">Submit</button>
-                </form>
-                <hr/>
+                <h1>Read Any Meet Result</h1>
                 <h5>Import any .sd3 or .cl2 meet file to see a list of swimmers and their times, splits, improvements, and points scored.</h5>
+                <br />
+                <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers} djsConfig={djsConfig} />
+                <hr/>
+                
                 <h6>None of this information is saved.</h6>
             </div>
           </div>
