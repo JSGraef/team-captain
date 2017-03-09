@@ -129,7 +129,8 @@ const Event = (props) => {
                         }
                     }
 
-                    return <EventSwim key={U.guid()} place={place} swimmer={swimmer} team={team}/>
+                    const swimplace = (swimmer.finalsPlace === '0' || swimmer.finalsPlace === '') ? place : swimmer.finalsPlace;
+                    return <EventSwim key={U.guid()} place={swimmer.finalsPlace} swimmer={swimmer} team={team}/>
                 })}
             
             </table>

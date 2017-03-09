@@ -24,6 +24,7 @@ const Swimmer = (props) => {
                     <th>Prelim Time</th>
                     <th>Finals Time</th>
                     <th>Time Adjustment</th>
+                    <th>Place</th>
                     <th>Points Scored</th>
                 </tr>
             </thead>

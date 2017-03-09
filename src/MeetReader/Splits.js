@@ -9,6 +9,7 @@ const Splits = (props) => {
     if(s === undefined)
         return <h4>Couldn't find splits</h4>
 
+    // Each record contains 10 spots for splits.
     let splits = [];
     splits.push( s.splitTime1 );
     splits.push( s.splitTime2 );

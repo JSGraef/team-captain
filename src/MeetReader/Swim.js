@@ -31,6 +31,7 @@ const Swim = (props) => {
                 <td>{swim.prelimTime}</td>
                 <td className="swim-finalTime">{finalsTime}</td>
                 <td className={timeDiffClass}>{timeDiff}</td>
+                <td>{swim.finalsPlace}</td>
                 <td>{swim.pointsScored}</td>
             </tr>
             { swim.splits.map( s => {
