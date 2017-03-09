@@ -61,8 +61,6 @@ const Event = (props) => {
         return diff;
     });
 
-    let place = 0;
-
     // If we have a relay (which follows a different format)
     if(swimmersInOrder[0].swimmers !== undefined) {
         return (
@@ -85,8 +83,7 @@ const Event = (props) => {
                 </thead>
 
                 {swimmersInOrder.map( relay => {
-                    place++;
-                    return <EventSwimRelay key={U.guid()} place={place} relay={relay} />
+                    return <EventSwimRelay key={U.guid()} place={relay.finalsPlace} relay={relay} />
                 })}
                 
                 </table>
@@ -115,7 +112,6 @@ const Event = (props) => {
             </thead>
             
                 {swimmersInOrder.map( swimmer => {
-                    place++;
                     let team='';
 
                     if(props.teams !== undefined){
@@ -129,7 +125,6 @@ const Event = (props) => {
                         }
                     }
 
-                    const swimplace = (swimmer.finalsPlace === '0' || swimmer.finalsPlace === '') ? place : swimmer.finalsPlace;
                     return <EventSwim key={U.guid()} place={swimmer.finalsPlace} swimmer={swimmer} team={team}/>
                 })}
             
