@@ -9,8 +9,11 @@ const EventSwim = (props) => {
 
     const swim = props.swimmer;
 
+    // WARNING: This code is duplicated in Swim.js
     const finalsTime = swim.finalsTime.substring(0,swim.finalsTime.length-1);
-    let timeDiff = U.timeDiff(swim.seedTime, swim.finalsTime);
+    let time = (finalsTime === '') ? swim.prelimTime : finalsTime ;
+
+    let timeDiff = U.timeDiff(swim.seedTime, time);
     let timeDiffClass = 'swim-diffNeg';
     if(timeDiff > 0) {
         timeDiff = '+'+timeDiff;
