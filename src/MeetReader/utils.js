@@ -13,7 +13,7 @@ module.exports = {
       case '5': stroke = 'IM'; break;
       case '6': stroke = 'Free Relay'; break;
       case '7': stroke = 'Medley Relay'; break;
-      default: break;
+      default: stroke = code; break;
     }
     return stroke;
   },
@@ -233,8 +233,8 @@ module.exports = {
     const sexCode       = line.substring(65,66).trim();
     const eventSex      = line.substring(66,67).trim();
     const eventDist     = line.substring(67,71).trim();
-    const strokeCode    = line.substring(71,73).trim();
-    const eventNum      = line.substring(73,76).trim();
+    const strokeCode    = line.substring(71,72).trim();
+    const eventNum      = line.substring(72,76).trim();
     const eventAgeCode  = line.substring(76,80).trim();
     const dateOfSwim    = line.substring(80,88).trim();
     const seedTime      = line.substring(88,96).trim();
