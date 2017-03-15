@@ -16,10 +16,13 @@ const EventSwimRelay = (props) => {
         timeDiffClass = 'swim-diffPos';
     }
 
+    console.log(props.relay.swimmers)
+    console.log(props)
+
     return (
         <tbody>
         <tr>
-            <td>{props.place}</td>
+            <td>{relay.finalsPlace === '0' ? '-' : relay.finalsPlace}</td>
             <td className="swim-eventTitle mdl-data-table__cell--non-numeric">{relay.teamCode} {relay.relTeamName}</td>
             <td>{relay.seedTime}</td>
             <td>{relay.prelimTime}</td>

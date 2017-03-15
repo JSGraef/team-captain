@@ -83,7 +83,7 @@ const Event = (props) => {
                 </thead>
 
                 {swimmersInOrder.map( relay => {
-                    return <EventSwimRelay key={U.guid()} place={relay.finalsPlace} relay={relay} />
+                    return <EventSwimRelay key={U.guid()} relay={relay} />
                 })}
                 
                 </table>
@@ -125,7 +125,7 @@ const Event = (props) => {
                         }
                     }
 
-                    return <EventSwim key={U.guid()} place={swimmer.finalsPlace} swimmer={swimmer} team={team}/>
+                    return <EventSwim key={U.guid()} swimmer={swimmer} team={team}/>
                 })}
             
             </table>

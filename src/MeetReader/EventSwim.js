@@ -23,7 +23,7 @@ const EventSwim = (props) => {
     return (
         <tbody>
         <tr>
-            <td>{props.place}</td>
+            <td>{swim.finalsPlace === '0' ? '-' : swim.finalsPlace}</td>
             <td className="swim-eventTitle mdl-data-table__cell--non-numeric"><Link to={`/meetreader/swimmer/${swim.ussNum}`}>{swim.swimmerName}</Link></td>
             <td><Link to={`/meetreader/team/${props.team}`}>{props.team}</Link></td>
             <td>{swim.seedTime}</td>
