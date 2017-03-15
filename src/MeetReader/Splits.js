@@ -23,12 +23,20 @@ const Splits = (props) => {
     splits.push( s.splitTime10 );
 
     const prelimOrFinal = (s.prelimFinalCode === "F") ? 'FINALS' : 'PRELIMS';
+    let splitIdx = 0;
 
     return (
         <td colSpan="4" className="swim-splitTd">
             <span className='swim-split'>{prelimOrFinal}</span>
             { splits.map( split => {
-                return <span key={U.guid()} className='swim-split'>{split}</span>
+                
+                let splitTime = (splitIdx === 0) ? split : U.timeDiff(splits[splitIdx-1], split);
+                if(splitTime !== '')
+                    splitTime = `(${splitTime})`;
+                    
+                splitIdx++;
+                
+                return <span key={U.guid()} className='swim-split'>{split} {splitTime}</span>
             })}
         </td>
             
