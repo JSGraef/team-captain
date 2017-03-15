@@ -113,28 +113,28 @@ class MeetReader extends Component {
       let header = line.substring(0,2);
 
       switch(header){
-        case 'A0': 
+        case 'A0': // File Description
           U.parseA0(line); 
           break;
-        case 'B1': {
+        case 'B1': { // Meet Record
           const meetInfo = U.parseB1(line); 
           this.setState({meetInfo: meetInfo});
           break;
         }
-        case 'B2': 
+        case 'B2': // Meet Host Record
           U.parseB2(line); 
           break;
-        case 'C1': {
+        case 'C1': { // Team Record
             const teamRecord = U.parseC1(line); 
             let teams = this.state.teams;
             teams.push(teamRecord);
             this.setState({teams: teams});
             break;
         }
-        case 'C2': 
+        case 'C2':  // Team Entry Record
           U.parseC2(line); 
           break;
-        case 'D0': { 
+        case 'D0': { // Individual Event Record
             const event = U.parseD0(line); 
             let teams = this.state.teams;
             let swimmers = teams[teams.length -1].swimmers;
@@ -151,13 +151,13 @@ class MeetReader extends Component {
 
             break;
         }
-        case 'D1': 
+        case 'D1': // Individual Administrative Record
           U.parseD1(line); 
           break;
-        case 'D2': 
+        case 'D2': // Individual Contact Record
           U.parseD2(line); 
           break;
-        case 'D3': {
+        case 'D3': { // Individual Information record
             const swimmer = U.parseD3(line); 
             let teams = this.state.teams;
             let swimmers = teams[teams.length -1].swimmers;
@@ -174,7 +174,7 @@ class MeetReader extends Component {
             
             break;
         }
-        case 'E0': {// relay team 
+        case 'E0': { // Relay Event Record
           const relayTeam = U.parseE0(line); 
           let teams = this.state.teams;
           let relays = teams[teams.length -1].relays;
@@ -187,7 +187,7 @@ class MeetReader extends Component {
 
           break;
         }
-        case 'F0': {// relay swimmer
+        case 'F0': { // Relay Swimmer Name Record
           const relaySwimmer = U.parseF0(line);
           let teams = this.state.teams;
           let relays = teams[teams.length -1].relays;
@@ -199,7 +199,7 @@ class MeetReader extends Component {
     
           break;
         }
-        case 'G0': {
+        case 'G0': { // Splits Record
             const splitRec = U.parseG0(line); 
             let teams = this.state.teams;
             let swimmer = teams[teams.length -1].swimmers[splitRec.ussNum];
@@ -219,16 +219,16 @@ class MeetReader extends Component {
             
             break;
         }
-        case 'J0': 
+        case 'J0': // Meet Qual Times
           U.parseJ0(line); 
           break;
-        case 'J1': 
+        case 'J1': // National Age Group Times
           U.parseJ1(line); 
           break;
-        case 'J2': 
+        case 'J2': // USS Motivational Times
           U.parseJ2(line); 
           break;
-        case 'Z0': 
+        case 'Z0': // USS Motivational Times
           U.parseJ0(line); 
           break;
         default: 

@@ -346,7 +346,7 @@ module.exports = {
   },
 
 
-  // E0 -- Relay Evet Record (ID relay team by name, code, gender)
+  // E0 -- Relay Event Record (ID relay team by name, code, gender)
   parseE0: function(line) {
     const header        = line.substring(0,2).trim();
     const orgCode       = line.substring(2,3).trim();
@@ -463,7 +463,7 @@ module.exports = {
     const lscCode       = line.substring(53,55).trim();
   },
 
-  // J1 -- National Age Group Times(ID qualifying times for a meet)
+  // J1 -- National Age Group Times (ID qualifying times for a meet)
   parseJ1: function(line) {
     const header        = line.substring(0,2).trim();
     const effectiveDate = line.substring(2,10).trim();
