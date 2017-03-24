@@ -1,6 +1,6 @@
 import React from 'react';
 import U from './utils';
-//import Splits from './Splits';
+import SplitsRelay from './SplitsRelay';
 //import {Link} from 'react-router';
 
 // props.relay comes in as an array of relay teams
@@ -16,9 +16,6 @@ const EventSwimRelay = (props) => {
         timeDiffClass = 'swim-diffPos';
     }
 
-    console.log(props.relay.swimmers)
-    console.log(props)
-
     return (
         <tbody>
         <tr>
@@ -29,6 +26,11 @@ const EventSwimRelay = (props) => {
             <td className="swim-finalTime">{relay.finalsTime}</td>
             <td className={timeDiffClass}>{timeDiff}</td>
             <td>{relay.pointsScored}</td>
+        </tr>
+
+        <tr>
+            <td colSpan='2' className="swim-splitTitle">SPLITS:</td>
+            <SplitsRelay swimmers={relay.swimmers} />
         </tr>
 
         </tbody>

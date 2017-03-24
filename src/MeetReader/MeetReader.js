@@ -107,6 +107,7 @@ class MeetReader extends Component {
   parseFileContents() {
     const lines = this.state.lines;
     let events = new Set();
+    let bRelay = false;
 
     // Read file line by line and do something with it
     for(let line of lines) {
@@ -135,6 +136,7 @@ class MeetReader extends Component {
           U.parseC2(line); 
           break;
         case 'D0': { // Individual Event Record
+            bRelay = false;
             const event = U.parseD0(line); 
             let teams = this.state.teams;
             let swimmers = teams[teams.length -1].swimmers;
@@ -158,6 +160,7 @@ class MeetReader extends Component {
           U.parseD2(line); 
           break;
         case 'D3': { // Individual Information record
+            bRelay = false;
             const swimmer = U.parseD3(line); 
             let teams = this.state.teams;
             let swimmers = teams[teams.length -1].swimmers;
@@ -175,6 +178,7 @@ class MeetReader extends Component {
             break;
         }
         case 'E0': { // Relay Event Record
+          bRelay = true;
           const relayTeam = U.parseE0(line); 
           let teams = this.state.teams;
           let relays = teams[teams.length -1].relays;
@@ -188,12 +192,15 @@ class MeetReader extends Component {
           break;
         }
         case 'F0': { // Relay Swimmer Name Record
+          bRelay = true;
           const relaySwimmer = U.parseF0(line);
           let teams = this.state.teams;
           let relays = teams[teams.length -1].relays;
 
-          // Get swimmers for last-entered relay (can assume this)
+          // Add swimmer to relay
           relays[relays.length-1].swimmers.push(relaySwimmer);
+
+          // Add relay to team
           teams[teams.length -1].relays = relays;
           this.setState({teams: teams});
     
@@ -205,9 +212,20 @@ class MeetReader extends Component {
             let swimmer = teams[teams.length -1].swimmers[splitRec.ussNum];
 
             // Swimmer was never entered in, just skip it for now
-            // TODO - need to handle this
+            // TODO - need to handle this, but shouldn't ever happen
             if(swimmer === undefined) 
                 break;
+            
+            // If it's a relay, need to make sure to add the split record to the relay
+            // instead of the swimmer
+            if(bRelay) {
+              let relays = teams[teams.length -1].relays;
+              const numswimmers = relays[relays.length-1].swimmers.length;
+              relays[relays.length-1].swimmers[numswimmers-1].split.push(splitRec);
+              teams[teams.length -1].relays = relays;
+              this.setState({teams: teams});        
+              break;
+            }
             
             // Because all a swimmer's G0 records directly follows their D3, we
             // can properly assume that the last entered swimmer is the correct one

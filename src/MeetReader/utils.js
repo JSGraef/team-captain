@@ -410,7 +410,8 @@ module.exports = {
 
     const relaySwimmer = {
       teamCode, teamName, swimmerName, ussNum, citizenCode, birthdate, swimmerAge, sexCode, prelimOrderCode,
-      swimoffOrderCode, finalsOrderCode, legTime, courseCode, takeoffTime, ussNumNew, prefFirstName
+      swimoffOrderCode, finalsOrderCode, legTime, courseCode, takeoffTime, ussNumNew, prefFirstName,
+      split: []
     }
 
     return relaySwimmer;
@@ -418,8 +419,8 @@ module.exports = {
 
     // G0 -- Splits Record
   parseG0: function(line) {
-    // const header        = line.substring(0,2).trim();
-    // const orgCode       = line.substring(2,3).trim();
+    const header        = line.substring(0,2).trim();
+    const orgCode       = line.substring(2,3).trim();
     const swimmerName   = line.substring(15,43).trim();
     const ussNum        = line.substring(43,55).trim();
     const sequenceNum   = line.substring(55,56).trim();
