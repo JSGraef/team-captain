@@ -10,8 +10,6 @@ import DropzoneComponent from 'react-dropzone-component';
 import 'react-dropzone-component/styles/filepicker.css';
 import 'dropzone/dist/min/dropzone.min.css';
 
-const hyv = require('../sample-hyv');
-
 class MeetReader extends Component {
   constructor() {
     super();
