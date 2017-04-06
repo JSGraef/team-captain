@@ -18,21 +18,20 @@ const EventSwimRelay = (props) => {
 
     return (
         <tbody>
-        <tr>
-            <td>{relay.finalsPlace === '0' ? '-' : relay.finalsPlace}</td>
-            <td className="swim-eventTitle mdl-data-table__cell--non-numeric">{relay.teamCode} {relay.relTeamName}</td>
-            <td>{relay.seedTime}</td>
-            <td>{relay.prelimTime}</td>
-            <td className="swim-finalTime">{relay.finalsTime}</td>
-            <td className={timeDiffClass}>{timeDiff}</td>
-            <td>{relay.pointsScored}</td>
-        </tr>
+            <tr>
+                <td>{relay.finalsPlace === '0' ? '-' : relay.finalsPlace}</td>
+                <td className="swim-eventTitle mdl-data-table__cell--non-numeric">{relay.teamCode} {relay.relTeamName}</td>
+                <td>{relay.seedTime}</td>
+                <td>{relay.prelimTime}</td>
+                <td className="swim-finalTime">{relay.finalsTime}</td>
+                <td className={timeDiffClass}>{timeDiff}</td>
+                <td>{relay.pointsScored}</td>
+            </tr>
 
-        <tr>
-            <td colSpan='2' className="swim-splitTitle">SPLITS:</td>
-            <SplitsRelay swimmers={relay.swimmers} />
-        </tr>
-
+            <tr>
+                <td colSpan='2' className="swim-splitTitle">SPLITS:</td>
+                <SplitsRelay swimmers={relay.swimmers} />
+            </tr>
         </tbody>
     )}
 

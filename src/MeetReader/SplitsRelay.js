@@ -7,8 +7,10 @@ const SplitsRelay = (props) => {
     const swimmers = props.swimmers;
     
     let splits = [];
-    for(let swimmer of swimmers)
-        splits.push(swimmer.split[0].splitTime1);
+    for(let swimmer of swimmers) {
+        if(swimmer.split[0] !== undefined)
+            splits.push(swimmer.split[0].splitTime1);
+    }
 
     const swim = swimmers[0];
     if(swim === undefined)
@@ -27,7 +29,7 @@ const SplitsRelay = (props) => {
                     splitTime = `(${splitTime})`;
                 
                 if(split === '')
-                    return <span></span>;
+                    return <span key={U.guid()}></span>;
 
                 splitIdx++                
                 return <span key={U.guid()} className='swim-split'>{swimmers[splitIdx-1].swimmerName} {splitTime}</span>
