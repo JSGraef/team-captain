@@ -307,9 +307,6 @@ class MeetReader extends Component {
 
   render() {
 
-    let output = U.parseHYV(hyv);
-    console.log(output);
-
       const childrenWithProps = React.Children.map(this.props.children,
         (child) => React.cloneElement(child, {
           teams: this.state.teams,
