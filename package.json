@@ -19,6 +19,7 @@
     "express": "^4.14.0",
     "firebase": "^3.4.0",
     "firebaseui": "^1.0.0",
+    "material-components-web": "^0.8.0",
     "re-base": "^2.2.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",

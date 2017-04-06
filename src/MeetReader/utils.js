@@ -518,4 +518,68 @@ module.exports = {
     const numofMemberDelegates = line.substring(100,103).trim();
   },
 
+  parseHYVEventCode(code) {
+    switch(code) {
+      case '1':
+      case 'A':
+        return 'Free';
+      case '2':
+      case 'B':
+        return 'Back';
+      case '3':
+      case 'C':
+        return 'Breast';
+      case '4':
+      case 'D':
+        return 'Fly';
+      case '5':
+      case 'E':
+        return 'Medley';
+      default: return '';
+    }
+  },
+
+  parseHYV: function(lines) {
+    let hyv = {
+      header: {},
+      events: []
+    }
+
+    let head = true;
+    for(let line of lines) {
+      const l = line.split(';');
+
+      if(head === true) {
+        hyv.header = {
+          description: l[0], 
+          startDate: l[1],
+          endDate: l[2],
+          ageUpDate: l[3],
+          courseCode: l[4],
+          location: l[5],
+          softwareVendor: l[7],
+          softwareVersion: l[8]
+        }
+        head = false;
+      } else {
+        const event = {
+          eventNum: l[0],
+          eventClass: l[1],
+          gender: l[2],
+          eventType: l[3],
+          minAge: l[4],
+          maxAge: l[5],
+          distance: l[6],
+          eventCode: this.parseHYVEventCode(l[7]),
+          qualifyingTime: l[9],
+          eventFee: l[11]
+        }
+
+        hyv.events.push(event);
+      }
+    }
+
+    return hyv;
+  }
+
 }

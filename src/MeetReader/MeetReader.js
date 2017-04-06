@@ -10,6 +10,8 @@ import DropzoneComponent from 'react-dropzone-component';
 import 'react-dropzone-component/styles/filepicker.css';
 import 'dropzone/dist/min/dropzone.min.css';
 
+const hyv = require('../sample-hyv');
+
 class MeetReader extends Component {
   constructor() {
     super();
@@ -305,6 +307,9 @@ class MeetReader extends Component {
 
   render() {
 
+    let output = U.parseHYV(hyv);
+    console.log(output);
+
       const childrenWithProps = React.Children.map(this.props.children,
         (child) => React.cloneElement(child, {
           teams: this.state.teams,
@@ -331,7 +336,7 @@ class MeetReader extends Component {
                 <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers} djsConfig={djsConfig} />
                 <hr/>
                 
-                <h6>None of this information is saved.</h6>
+                <h6>None of this information is saved on our server.</h6>
             </div>
           </div>
         );
