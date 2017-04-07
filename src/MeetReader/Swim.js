@@ -23,7 +23,7 @@ const Swim = (props) => {
 
     return (
         <tbody>
-            <tr>
+            <tr className="swim-event-tr">
                 <td className="swim-eventTitle mdl-data-table__cell--non-numeric">
                     <Link to={`/meetreader/events/${swim.eventNum}`}>{`${swim.eventDist} ${U.getStrokeFromCode(swim.strokeCode)}`}</Link>
                 </td>

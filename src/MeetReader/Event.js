@@ -69,7 +69,7 @@ const Event = (props) => {
                     <h4>{U.parseEventTitle(event[0])}</h4>
                 </div>
                 
-                <table className="mdl-data-table" width="100%">
+                <table className="" width="100%">
                 <thead>
                     <tr>
                         <th>Place</th>
@@ -97,7 +97,7 @@ const Event = (props) => {
                 <h4>{U.parseEventTitle(event[0])}</h4>
             </div>
             
-            <table className="mdl-data-table" width="100%">
+            <table className="eventTable" width="100%">
             <thead>
                 <tr>
                     <th>Place</th>

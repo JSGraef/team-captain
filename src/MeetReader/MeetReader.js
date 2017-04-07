@@ -346,8 +346,8 @@ class MeetReader extends Component {
               </form>
               <hr/>
           </div>
-          <div className="mdl-cell mdl-cell--1-col">
-            <div className="sidenav">
+          <div className="mdl-cell mdl-cell--2-col">
+            <div>
               <h6>TEAMS</h6>
               <TeamList teams={this.state.teams} />
               <hr />
@@ -356,7 +356,7 @@ class MeetReader extends Component {
               <Link to="/meetreader/events">All Events</Link>                       
             </div>
           </div>
-          <div className="mdl-cell mdl-cell--11-col">
+          <div className="mdl-cell mdl-cell--10-col">
               { childrenWithProps || <MRDashboard events={this.state.events} teams={this.state.teams} /> }
           </div>
         </div>

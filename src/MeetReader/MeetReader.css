@@ -4,9 +4,10 @@
 }
 
 .swimmer h4 {
-  color: #fff;
+  color: #333;
   padding-top: 0;
   margin: 0;
+  font-weight: bold;
 }
 
 .swimmer h6 {
@@ -23,8 +24,8 @@
 }
 
 .swimmer-header {
-  padding: 5px;
-  background-color: #455A64;
+  padding: 5px 5px 5px 0;
+  border-bottom: 4px solid #455A64;
 }
 
 .swim-diffPos {
@@ -51,15 +52,36 @@
   font-style: italic;
 }
 
-tr [colspan="4"] {
+tr [colspan="6"] {
     text-align: left;
 }
 
+tr [colspan="2"] {
+    text-align: right;
+}
+
+.swim-event-tr td {
+  border-top: 1px solid #eee;
+}
 
 .swim-eventTitle {
   font-weight: bold;
   font-size: 1.2em;
 }
+
+td {
+  padding: 5px;
+}
+
+th {
+  text-align: left;
+}
+
+table {
+  background-color: #fefefe;
+}
+
+
 @media (min-width: 840px) {
 .sidenav {
   position: fixed;

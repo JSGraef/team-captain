@@ -13,10 +13,9 @@ const Swimmer = (props) => {
         <div className="mdl-cell mdl-cell--12-col swimmer">
             <div className="swimmer-header">
                 <h4>{swim.swimmerName}</h4>
-                <h6>{`Age ${swim.swimmerAge}`}</h6>
             </div>
             
-            <table className="mdl-data-table" width="100%">
+            <table className="" width="100%">
             <thead>
                 <tr>
                     <th>Event</th>
