@@ -350,10 +350,14 @@ class MeetReader extends Component {
             <div>
               <h6>TEAMS</h6>
               <TeamList teams={this.state.teams} />
-              <hr />
-              <Link to="/meetreader">Event List</Link> 
-              <hr />
-              <Link to="/meetreader/events">All Events</Link>                       
+
+              <br/>
+              
+              <h6>EVENTS</h6>
+              <ul>
+                <li><Link to="/meetreader">Event List</Link></li>              
+                <li><Link to="/meetreader/events">Show All</Link> </li>   
+              </ul>                   
             </div>
           </div>
           <div className="mdl-cell mdl-cell--10-col">
