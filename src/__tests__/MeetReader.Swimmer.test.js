@@ -20,7 +20,7 @@ describe('<Swimmer />', () => {
   it('renders swimmer information', () => {
     const wrapper = shallow(<Swimmer swimmer={swimmer} />);
     expect(wrapper.contains("Davila, Joshua")).toEqual(true);
-    expect(wrapper.contains("Age 16")).toEqual(true);
+    //expect(wrapper.contains("Age 16")).toEqual(true);
   });
 
   it('renders swims of swimmer', () => {
