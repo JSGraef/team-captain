@@ -223,7 +223,7 @@ module.exports = {
     // D0 -- Individual event record (ID athlete by name, #, etc)
   parseD0: function(line) {
     const header        = line.substring(0,2).trim();
-    const orgCode       = line.substring(2,3).trim();
+    const orgCode       = line.substring(2,1).trim();
     const swimmerName   = line.substring(11,39).trim();
     const ussNum        = line.substring(39,51).trim();
     const attachCode    = line.substring(51,52).trim();
